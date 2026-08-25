@@ -1,0 +1,113 @@
+# Machine Learning Pipeline
+
+> ML lifecycle, versioning, evaluation, and inference architecture
+
+## Complexity Progression
+
+| Stage | Approach |
+|-------|----------|
+| 1 | Rule-based logic |
+| 2 | Classical computer vision |
+| 3 | Classical ML (Logistic Regression, Decision Trees, Random Forest, SVM, Gradient Boosting) |
+| 4 | Deep learning (PyTorch, TensorFlow, ONNX, ONNX Runtime) |
+
+Do not jump directly to deep learning. The intern must justify increased complexity.
+
+## Dataset Structure
+
+```text
+dataset/
+├── images/
+├── labels/
+├── metadata/
+└── manifests/
+```
+
+Each record should support:
+
+```text
+image, timestamp, plant_id, sensor readings, camera metadata, environment, health label
+```
+
+Example:
+
+```json
+{
+  "image": "images/plant_001_000123.jpg",
+  "plant_id": "plant-001",
+  "timestamp": "2026-08-25T18:30:00Z",
+  "soil_moisture": 41.2,
+  "temperature": 27.8,
+  "humidity": 63.4,
+  "light": 812,
+  "label": "healthy"
+}
+```
+
+## Data Quality Checks
+
+Validate before training:
+
+- Missing data, corrupted/blurry/over/under-exposed images
+- Duplicate images, incorrect labels
+- Sensor anomalies, timestamp mismatches
+
+Invalid data must not silently enter the training pipeline.
+
+## Leakage Prevention
+
+Explicitly check:
+
+- Duplicate images
+- Same plant in train and test
+- Temporal leakage
+- Preprocessing leakage
+- Label leakage
+- Train/test contamination
+
+## Model Versioning
+
+Every inference must identify the model:
+
+```json
+{
+  "model_name": "plant-health-classifier",
+  "model_version": "1.2.0",
+  "prediction": "stressed",
+  "confidence": 0.91,
+  "timestamp": "..."
+}
+```
+
+Never use ambiguous filenames like `final_final_v2_really_final.pt`.
+
+## UNKNOWN State
+
+If `confidence < threshold` → prediction = `UNKNOWN`.
+
+Do not force a diagnosis when evidence is insufficient.
+
+## Inference Node Responsibilities
+
+1. Subscribe to images
+2. Validate and preprocess
+3. Run inference
+4. Produce prediction + confidence
+5. Record model version
+6. Measure inference latency
+7. Publish prediction
+8. Handle failures safely
+
+Must **not** train models, manipulate GPIO, own DB schema, or control frontend.
+
+## Evaluation Metrics
+
+Track: accuracy, precision, recall, F1, confusion matrix, inference latency, model size, CPU/memory.
+
+When classes are imbalanced, accuracy alone is insufficient — use ROC-AUC / PR-AUC where appropriate.
+
+## Related Docs
+
+- [SYSTEM_BOUNDARIES.md](./SYSTEM_BOUNDARIES.md)
+- [DATA_PIPELINE.md](./DATA_PIPELINE.md)
+- [../plans/ROADMAP.md](../plans/ROADMAP.md) — PHP-11 through PHP-14
