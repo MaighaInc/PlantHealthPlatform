@@ -20,10 +20,16 @@ plant_health_irrigation/
 plant_health_bringup/
 ```
 
-## Example Topic Structure
+## Active Topics
+
+| Topic | Type | Direction | Introduced | Notes |
+|-------|------|-----------|------------|-------|
+| `/system/status` | `std_msgs/String` | pub: `status_publisher` / sub: `status_subscriber` | PHP-01 | Heartbeat payload `state=…;seq=…;source=…;ts=…` |
+
+## Planned Topic Structure
 
 ```text
-/system/status
+/system/status                 ← active (PHP-01)
 
 /environment/temperature
 /environment/humidity
@@ -46,7 +52,7 @@ plant_health_bringup/
 /diagnostics
 ```
 
-These are **examples**. Before adding a topic:
+Entries without an “Active Topics” row are **planned**. Before adding a topic:
 
 1. Inspect existing topic architecture
 2. Determine whether an existing topic can be reused

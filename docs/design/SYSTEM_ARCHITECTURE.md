@@ -98,7 +98,9 @@ ML complexity increases in stages:
 
 ## Related Docs
 
+- [COMPREHENSIVE_DESIGN.md](./COMPREHENSIVE_DESIGN.md) — master design synthesis
 - [ROS_ARCHITECTURE.md](./ROS_ARCHITECTURE.md)
 - [DATA_PIPELINE.md](./DATA_PIPELINE.md)
 - [ML_PIPELINE.md](./ML_PIPELINE.md)
 - [IRRIGATION_SAFETY.md](./IRRIGATION_SAFETY.md)
+- [../plans/IMPLEMENTATION_PLAN.md](../plans/IMPLEMENTATION_PLAN.md)

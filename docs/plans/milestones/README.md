@@ -32,6 +32,8 @@ Each milestone plan should include:
 
 ## Status
 
-No milestone plans generated yet — start with PHP-01 when implementation begins.
+| Milestone | Plan | Status |
+|-----------|------|--------|
+| PHP-01 | [PHP-01-ros-foundation.md](./PHP-01-ros-foundation.md) | In progress |
 
-See [ROADMAP.md](../ROADMAP.md) for the full milestone list.
+See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

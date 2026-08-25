@@ -6,7 +6,11 @@
 PHP-01 → PHP-02 → … → PHP-30 → Plant Health System (PHS)
 ```
 
-Per-milestone implementation plans: [`milestones/`](./milestones/) (generated as work progresses).
+**Master delivery plan (phases, acceptance, dependencies, risks):** [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md)
+
+**Unified design reference:** [../design/COMPREHENSIVE_DESIGN.md](../design/COMPREHENSIVE_DESIGN.md)
+
+Per-milestone working plans: [`milestones/`](./milestones/) (generated as work progresses).
 
 ---
 
@@ -106,6 +110,8 @@ A milestone is complete only when implementation works, tests pass, docs updated
 
 ## Related Docs
 
+- [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md)
 - [CAPSTONE_SCENARIOS.md](./CAPSTONE_SCENARIOS.md)
 - [REPOSITORY_STRUCTURE.md](./REPOSITORY_STRUCTURE.md)
+- [../design/COMPREHENSIVE_DESIGN.md](../design/COMPREHENSIVE_DESIGN.md)
 - [../prompt/MASTER_PROMPT.md](../prompt/MASTER_PROMPT.md)

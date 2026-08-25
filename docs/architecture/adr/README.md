@@ -12,7 +12,7 @@
 
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|
-| — | *No ADRs yet — create as decisions are made* | — | — |
+| [0001](./0001-ros2-distro-humble.md) | ROS 2 Distro: Humble Hawksbill | Accepted | 2026-08-25 |
 
 ---
 
@@ -31,7 +31,7 @@ Create a new ADR when a decision:
 
 Candidates as the platform grows:
 
-- ROS 2 distro selection (Humble vs Iron)
+- ~~ROS 2 distro selection (Humble vs Iron)~~ → ADR-0001
 - Backend stack choice (FastAPI vs Node/TS)
 - HSV segmentation vs deep-learning segmentation
 - Classical ML before CNN justification

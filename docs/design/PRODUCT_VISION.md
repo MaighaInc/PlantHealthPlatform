@@ -74,7 +74,9 @@ Sensors → Camera → ROS 2 → OpenCV → Features → ML → Health → Fusio
 
 ## Related Docs
 
+- [COMPREHENSIVE_DESIGN.md](./COMPREHENSIVE_DESIGN.md) — full design synthesis
 - [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md)
 - [SYSTEM_BOUNDARIES.md](./SYSTEM_BOUNDARIES.md)
+- [../plans/IMPLEMENTATION_PLAN.md](../plans/IMPLEMENTATION_PLAN.md) — delivery plan
 - [../plans/ROADMAP.md](../plans/ROADMAP.md)
 - [../prompt/MASTER_PROMPT.md](../prompt/MASTER_PROMPT.md)
