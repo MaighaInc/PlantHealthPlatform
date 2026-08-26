@@ -1,0 +1,8 @@
+/** Rule-based health engine defaults (PHP-09). */
+
+health_engine:
+  ros__parameters:
+    soil_dry_threshold: 30.0
+    temp_hot_threshold: 32.0
+    publish_period_sec: 1.0
+    health_topic: "/plant/health"

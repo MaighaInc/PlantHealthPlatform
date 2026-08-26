@@ -18,15 +18,20 @@ GPIO
 
 **ML inference must never directly activate physical irrigation.**
 
-## Rule-Based Health (pre-ML)
+## Rule-Based Health (pre-ML) — PHP-09
+
+Implemented in `plant_health_health` (`evaluate_health` + `/plant/health`).
 
 Example:
 
 ```text
-soil moisture < threshold AND temperature > threshold → water stress
+soil moisture < soil_dry_threshold AND temperature > temp_hot_threshold → water_stress
+soil moisture < soil_dry_threshold → dry_soil
+invalid / out-of-range sensors → UNKNOWN
+else → healthy
 ```
 
-Rules must be configurable, testable, and documented — not buried in ROS callbacks.
+Rules are configurable via YAML/ROS params (`soil_dry_threshold`, `temp_hot_threshold`), unit-tested in a table, and **not** buried in ROS callbacks. This layer does **not** command GPIO.
 
 ## Safety Requirements
 

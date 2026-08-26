@@ -33,6 +33,7 @@ plant_health_bringup/
 | `/camera/image_raw` | `sensor_msgs/Image` | pub: `camera_publisher` | PHP-05 | BGR8; acquisition ts logged |
 | `/camera/image_processed` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Viz overlay (contours/bbox) |
 | `/plant/roi` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Cropped largest green region |
+| `/plant/health` | `std_msgs/String` | pub: `health_engine` | PHP-09 | `status=…;score=…;reason=…;confidence=…;ts=…` |
 
 ## Planned Topic Structure
 
@@ -47,8 +48,8 @@ plant_health_bringup/
 /camera/image_raw              ← active (PHP-05)
 /camera/image_processed        ← active (PHP-06)
 /plant/roi                     ← active (PHP-06)
+/plant/health                  ← active (PHP-09)
 /plant/features                ← planned (PHP-10)
-/plant/health
 /plant/disease_prediction
 
 /irrigation/command

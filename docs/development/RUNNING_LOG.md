@@ -56,3 +56,8 @@
 - Acquisition-time sync windows (`SensorTimeBuffer`); delayed samples not silently joined
 - Dataset logger records sync_status / missing / deltas in metadata
 
+## 2026-08-25 — PHP-09
+
+- Package `plant_health_health`: configurable rules → `/plant/health`
+- Table-driven tests; dry+hot → water_stress; invalid → unknown; no GPIO
+

@@ -48,7 +48,7 @@ python -m pip install pytest
 ### Hardware-free unit tests (no ROS)
 
 ```bash
-export PYTHONPATH=ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:ros2_ws/src/plant_health_camera:ros2_ws/src/plant_health_cv:ml:shared
+export PYTHONPATH=ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:ros2_ws/src/plant_health_camera:ros2_ws/src/plant_health_cv:ros2_ws/src/plant_health_health:ml:shared
 python -m pytest tests/unit -q
 # or: bash scripts/dev/run_unit_tests.sh
 ```
@@ -58,7 +58,7 @@ python -m pytest tests/unit -q
 ```bash
 cd ros2_ws
 source /opt/ros/humble/setup.bash
-colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv plant_health_dataset
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv plant_health_dataset plant_health_health
 source install/setup.bash
 ros2 launch plant_health_status status.launch.py
 # faster heartbeat without code edits:
@@ -72,6 +72,9 @@ ros2 launch plant_health_camera camera.launch.py development_mode:=SIMULATION
 ros2 launch plant_health_cv cv.launch.py
 # dataset logger:
 ros2 launch plant_health_dataset dataset_logger.launch.py plant_id:=plant_001
+# rule-based health:
+ros2 launch plant_health_health health.launch.py
+ros2 topic echo /plant/health
 ```
 
 Inspect:
@@ -103,6 +106,7 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/camera/image_raw` | `sensor_msgs/Image` | `plant_health_camera` |
 | `/camera/image_processed` | `sensor_msgs/Image` | `plant_health_cv` |
 | `/plant/roi` | `sensor_msgs/Image` | `plant_health_cv` |
+| `/plant/health` | `std_msgs/String` | `plant_health_health` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -129,6 +133,6 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-09: rule-based plant health engine
+- PHP-10: publish `/plant/features` feature vector
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub

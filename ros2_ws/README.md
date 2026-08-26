@@ -28,9 +28,11 @@ Current packages:
 - `plant_health_camera` — camera acquisition → `/camera/image_raw`
 - `plant_health_cv` — OpenCV pipeline → processed + ROI
 - `plant_health_dataset` — log images + metadata under `ml/datasets/`
+- `plant_health_health` — rule-based `/plant/health`
 
 ```bash
-colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv plant_health_dataset
-ros2 launch plant_health_dataset dataset_logger.launch.py
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv plant_health_dataset plant_health_health
+ros2 launch plant_health_health health.launch.py
+ros2 topic echo /plant/health
 ```
 
