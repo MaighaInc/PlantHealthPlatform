@@ -1,14 +1,15 @@
-"""Parameter validation for virtual sensor node (no rclpy)."""
+"""Parameter validation for sensor publisher node (no rclpy)."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
 
+from plant_health_sensors.factory import SensorFactoryError, normalize_mode
 from plant_health_sensors.sensor_kinds import SensorKind
 
 
 class SensorParameterError(ValueError):
-    """Invalid virtual-sensor ROS/runtime parameter."""
+    """Invalid sensor ROS/runtime parameter."""
 
 
 def validate_topic(topic: str) -> str:
@@ -54,6 +55,15 @@ def parse_sensor_kind(raw: str) -> SensorKind:
         ) from exc
 
 
+def validate_backend(backend: str) -> str:
+    choice = backend.strip().lower()
+    if choice not in {"auto", "virtual", "mock", "real"}:
+        raise SensorParameterError(
+            f"sensor_backend must be auto|virtual|mock|real, got {backend!r}"
+        )
+    return choice
+
+
 @dataclass(frozen=True)
 class VirtualPublisherParams:
     sample_period_sec: float
@@ -62,6 +72,8 @@ class VirtualPublisherParams:
     noise_std: float
     outlier_probability: float
     invalid_probability: float
+    development_mode: str = "SIMULATION"
+    sensor_backend: str = "auto"
 
     @classmethod
     def from_raw(
@@ -73,6 +85,8 @@ class VirtualPublisherParams:
         noise_std: float,
         outlier_probability: float,
         invalid_probability: float,
+        development_mode: str = "SIMULATION",
+        sensor_backend: str = "auto",
     ) -> VirtualPublisherParams:
         kinds_raw = [k.strip() for k in enabled_kinds.split(",") if k.strip()]
         if not kinds_raw:
@@ -80,6 +94,10 @@ class VirtualPublisherParams:
         kinds = tuple(parse_sensor_kind(k) for k in kinds_raw)
         if float(noise_std) < 0:
             raise SensorParameterError("noise_std must be >= 0")
+        try:
+            mode = normalize_mode(development_mode)
+        except SensorFactoryError as exc:
+            raise SensorParameterError(str(exc)) from exc
         return cls(
             sample_period_sec=validate_period_sec(sample_period_sec),
             enabled_kinds=kinds,
@@ -91,4 +109,6 @@ class VirtualPublisherParams:
             invalid_probability=validate_probability(
                 "invalid_probability", invalid_probability
             ),
+            development_mode=mode,
+            sensor_backend=validate_backend(sensor_backend),
         )

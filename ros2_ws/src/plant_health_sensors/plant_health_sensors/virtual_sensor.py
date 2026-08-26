@@ -2,30 +2,25 @@
 
 from __future__ import annotations
 
-import math
 import random
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
+from plant_health_sensors.interfaces import SensorInterface
+from plant_health_sensors.readings import (
+    SensorReading,
+    is_invalid_float,
+    reading_to_float32,
+)
 from plant_health_sensors.sensor_kinds import SensorKind
 
-
-@dataclass(frozen=True)
-class SensorReading:
-    """One sample from a virtual (or later real) sensor."""
-
-    kind: SensorKind
-    value: float | None
-    """Numeric reading, or None when the sample is invalid."""
-
-    timestamp_iso: str
-    sensor_id: str
-    is_outlier: bool = False
-    is_invalid: bool = False
-
-    @property
-    def is_valid(self) -> bool:
-        return self.value is not None and not self.is_invalid
+__all__ = [
+    "SensorReading",
+    "VirtualSensor",
+    "VirtualSensorConfig",
+    "is_invalid_float",
+    "reading_to_float32",
+]
 
 
 @dataclass(frozen=True)
@@ -63,7 +58,7 @@ class VirtualSensorConfig:
             raise ValueError("sensor_id must be non-empty")
 
 
-class VirtualSensor:
+class VirtualSensor(SensorInterface):
     """
     Configurable virtual sensor with noise, outliers, and invalid injection.
 
@@ -79,6 +74,14 @@ class VirtualSensor:
     @property
     def config(self) -> VirtualSensorConfig:
         return self._config
+
+    @property
+    def kind(self) -> SensorKind:
+        return self._config.kind
+
+    @property
+    def sensor_id(self) -> str:
+        return self._config.sensor_id
 
     @property
     def sequence(self) -> int:
@@ -115,14 +118,3 @@ class VirtualSensor:
             is_outlier=is_outlier,
             is_invalid=False,
         )
-
-
-def reading_to_float32(reading: SensorReading) -> float:
-    """Map a reading to Float32 payload; invalid → NaN."""
-    if not reading.is_valid or reading.value is None:
-        return float("nan")
-    return float(reading.value)
-
-
-def is_invalid_float(value: float) -> bool:
-    return math.isnan(value)

@@ -118,5 +118,6 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-04: `SensorInterface` wrapping VirtualSensor / Mock / Real adapters
+- PHP-05: camera integration on the same abstraction mindset
+- Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - Expand shared config.yaml for multi-package defaults

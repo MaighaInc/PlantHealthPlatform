@@ -28,3 +28,9 @@
 - Consolidated PHP-01…PHP-03 onto `main`; deleted local/remote `feature/php-*` branches
 - Future milestones commit directly on `main`
 
+## 2026-08-25 — PHP-04
+
+- `SensorInterface` + VirtualSensor / MockSensor / RealSensorStub
+- Factory mode selection; node samples via `sample_all()` only
+- Unit tests prove consumer can swap backends without device imports
+

@@ -8,3 +8,5 @@ virtual_sensor_publisher:
     noise_std: 0.5
     outlier_probability: 0.0
     invalid_probability: 0.0
+    development_mode: "SIMULATION"
+    sensor_backend: "auto"

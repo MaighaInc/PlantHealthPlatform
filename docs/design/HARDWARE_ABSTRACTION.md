@@ -10,16 +10,25 @@ Hardware must never dominate application architecture. Application code uses int
 
 ```text
 SensorInterface
- ├── VirtualSensor       (simulation — configurable noise, outliers)
- ├── MockSensor          (deterministic tests)
- └── RealSensorAdapter   (BME280, DHT, etc.)
+ ├── VirtualSensor       (simulation — configurable noise, outliers)  ← PHP-03/04
+ ├── MockSensor          (deterministic tests)                        ← PHP-04
+ └── RealSensorStub     (HARDWARE/PRODUCTION until drivers land)     ← PHP-04
 ```
 
 Usage:
 
 ```python
-reading = sensor.read()
+reading = sensor.read()  # SensorInterface only
 ```
+
+Factory (`plant_health_sensors.factory.create_sensors`):
+
+| `development_mode` | `sensor_backend=auto` |
+|--------------------|------------------------|
+| SIMULATION / DEVELOPMENT | VirtualSensor |
+| HARDWARE / PRODUCTION | RealSensorStub (raises until implemented) |
+
+Force with `sensor_backend`: `virtual` | `mock` | `real`.
 
 Not direct register/I2C calls in business logic.
 
