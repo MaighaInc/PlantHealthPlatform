@@ -1,0 +1,12 @@
+/** Camera publisher defaults (PHP-05). */
+
+camera_publisher:
+  ros__parameters:
+    publish_period_sec: 0.2
+    development_mode: "SIMULATION"
+    camera_backend: "auto"
+    device_index: 0
+    width: 640
+    height: 480
+    fps: 15.0
+    topic: "/camera/image_raw"

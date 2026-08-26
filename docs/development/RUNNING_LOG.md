@@ -34,3 +34,9 @@
 - Factory mode selection; node samples via `sample_all()` only
 - Unit tests prove consumer can swap backends without device imports
 
+## 2026-08-25 — PHP-05
+
+- Package `plant_health_camera`: CameraInterface, Simulated/USB/Mock
+- Publishes `/camera/image_raw`; validation rejects blank/invalid; drops logged
+- Sample plant image for SIMULATION; USB reconnect policy documented
+

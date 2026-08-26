@@ -30,6 +30,7 @@ plant_health_bringup/
 | `/environment/humidity` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | % RH; NaN = invalid |
 | `/environment/light` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | lux-like; NaN = invalid |
 | `/environment/co2` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | ppm; NaN = invalid |
+| `/camera/image_raw` | `sensor_msgs/Image` | pub: `camera_publisher` | PHP-05 | BGR8; acquisition ts logged |
 
 ## Planned Topic Structure
 
@@ -41,9 +42,8 @@ plant_health_bringup/
 /environment/light             ← active (PHP-03)
 /environment/co2               ← active (PHP-03)
 /environment/pressure          ← planned
-
-/camera/image_raw
-/camera/image_processed
+/camera/image_raw              ← active (PHP-05)
+/camera/image_processed        ← planned
 
 /plant/roi
 /plant/features
