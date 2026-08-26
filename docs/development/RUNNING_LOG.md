@@ -12,3 +12,12 @@
 - Implemented `plant_health_status` publisher + subscriber on `/system/status`
 - Hardware-free unit tests for heartbeat format/parse
 - Native ROS not available on Windows host — full launch smoke deferred to WSL/Ubuntu Humble
+- Committed as `c7b46a0`
+
+## 2026-08-25 — PHP-02
+
+- Branch `feature/php-02-ros-parameters`
+- Strict parameter validation (`parameters.py`); invalid values fail startup
+- YAML + launch overrides (`publish_period_sec`, `params_file`)
+- Shared `plant_health_common` for `DEVELOPMENT_MODE` / `.env` parsing
+- Unit tests for params and runtime config

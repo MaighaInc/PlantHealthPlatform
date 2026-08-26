@@ -48,7 +48,7 @@ python -m pip install pytest
 ### Hardware-free unit tests (no ROS)
 
 ```bash
-export PYTHONPATH=ros2_ws/src/plant_health_status
+export PYTHONPATH=ros2_ws/src/plant_health_status:shared
 python -m pytest tests/unit -q
 # or: bash scripts/dev/run_unit_tests.sh
 ```
@@ -61,6 +61,8 @@ source /opt/ros/humble/setup.bash
 colcon build --symlink-install --packages-select plant_health_status
 source install/setup.bash
 ros2 launch plant_health_status status.launch.py
+# faster heartbeat without code edits:
+ros2 launch plant_health_status status.launch.py publish_period_sec:=0.5
 ```
 
 Inspect:
@@ -69,6 +71,7 @@ Inspect:
 ros2 topic list
 ros2 topic echo /system/status
 ros2 node list
+ros2 param get /status_publisher publish_period_sec
 ```
 
 ## Configuration
@@ -106,5 +109,5 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-02: parameter validation and richer runtime configuration
 - PHP-03+: virtual sensors on top of this status foundation
+- Expand shared config.yaml for multi-package defaults

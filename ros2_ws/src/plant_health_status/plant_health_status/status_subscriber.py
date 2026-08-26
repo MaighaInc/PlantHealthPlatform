@@ -11,6 +11,10 @@ from plant_health_status.heartbeat import (
     SYSTEM_STATUS_TOPIC,
     parse_status_message,
 )
+from plant_health_status.parameters import (
+    ParameterValidationError,
+    StatusSubscriberParams,
+)
 
 
 class StatusSubscriberNode(Node):
@@ -19,15 +23,23 @@ class StatusSubscriberNode(Node):
     def __init__(self) -> None:
         super().__init__(DEFAULT_NODE_NAME_SUBSCRIBER)
         self.declare_parameter("topic", SYSTEM_STATUS_TOPIC)
-        topic = str(self.get_parameter("topic").value)
+
+        try:
+            params = StatusSubscriberParams.from_raw(
+                topic=str(self.get_parameter("topic").value),
+            )
+        except ParameterValidationError as exc:
+            self.get_logger().error(f"Invalid parameters: {exc}")
+            raise
 
         self._subscription = self.create_subscription(
             String,
-            topic,
+            params.topic,
             self._on_message,
             10,
         )
-        self.get_logger().info(f"Status subscriber listening on topic={topic}")
+        self.get_logger().info(f"Status subscriber listening on topic={params.topic}")
+        self.get_logger().info(f"Active parameters: topic={params.topic}")
 
     def _on_message(self, msg: String) -> None:
         try:
@@ -45,15 +57,21 @@ class StatusSubscriberNode(Node):
 
 def main(args: list[str] | None = None) -> None:
     rclpy.init(args=args)
-    node = StatusSubscriberNode()
+    node: StatusSubscriberNode | None = None
     try:
+        node = StatusSubscriberNode()
         rclpy.spin(node)
+    except ParameterValidationError:
+        pass
     except KeyboardInterrupt:
-        node.get_logger().info("Status subscriber interrupted")
+        if node is not None:
+            node.get_logger().info("Status subscriber interrupted")
     finally:
-        node.get_logger().info("Status subscriber shutting down")
-        node.destroy_node()
-        rclpy.shutdown()
+        if node is not None:
+            node.get_logger().info("Status subscriber shutting down")
+            node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 if __name__ == "__main__":

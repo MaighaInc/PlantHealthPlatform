@@ -1,0 +1,11 @@
+/** Status node parameters — override without code changes (PHP-02). */
+
+status_publisher:
+  ros__parameters:
+    publish_period_sec: 1.0
+    topic: "/system/status"
+    source: "plant_health_status"
+
+status_subscriber:
+  ros__parameters:
+    topic: "/system/status"
