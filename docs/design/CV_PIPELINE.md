@@ -78,6 +78,7 @@ The intern must understand algorithms — do not allow unexplained `cv2.some_fun
 
 ## Related Docs
 
+- [CV_ALGORITHMS.md](./CV_ALGORITHMS.md) — Problem/Algorithm/Tradeoffs for each stage
 - [DATA_PIPELINE.md](./DATA_PIPELINE.md)
 - [ML_PIPELINE.md](./ML_PIPELINE.md)
 - [../plans/ROADMAP.md](../plans/ROADMAP.md) — PHP-05, PHP-06, PHP-07, PHP-10

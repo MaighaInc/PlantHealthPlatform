@@ -31,6 +31,8 @@ plant_health_bringup/
 | `/environment/light` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | lux-like; NaN = invalid |
 | `/environment/co2` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | ppm; NaN = invalid |
 | `/camera/image_raw` | `sensor_msgs/Image` | pub: `camera_publisher` | PHP-05 | BGR8; acquisition ts logged |
+| `/camera/image_processed` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Viz overlay (contours/bbox) |
+| `/plant/roi` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Cropped largest green region |
 
 ## Planned Topic Structure
 
@@ -43,10 +45,9 @@ plant_health_bringup/
 /environment/co2               ← active (PHP-03)
 /environment/pressure          ← planned
 /camera/image_raw              ← active (PHP-05)
-/camera/image_processed        ← planned
-
-/plant/roi
-/plant/features
+/camera/image_processed        ← active (PHP-06)
+/plant/roi                     ← active (PHP-06)
+/plant/features                ← planned (PHP-10)
 /plant/health
 /plant/disease_prediction
 

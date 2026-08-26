@@ -39,5 +39,6 @@ Each milestone plan should include:
 | PHP-03 | [PHP-03-virtual-sensors.md](./PHP-03-virtual-sensors.md) | Complete |
 | PHP-04 | [PHP-04-sensor-abstraction.md](./PHP-04-sensor-abstraction.md) | Complete |
 | PHP-05 | [PHP-05-camera-integration.md](./PHP-05-camera-integration.md) | Complete |
+| PHP-06 | [PHP-06-opencv-pipeline.md](./PHP-06-opencv-pipeline.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

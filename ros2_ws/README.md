@@ -26,10 +26,12 @@ Current packages:
 - `plant_health_status` — system heartbeat
 - `plant_health_sensors` — virtual soil/environment sensors
 - `plant_health_camera` — camera acquisition → `/camera/image_raw`
+- `plant_health_cv` — OpenCV pipeline → processed + ROI
 
 ```bash
-colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv
 ros2 launch plant_health_camera camera.launch.py development_mode:=SIMULATION
-ros2 topic hz /camera/image_raw
+ros2 launch plant_health_cv cv.launch.py
+ros2 topic hz /camera/image_processed
 ```
 

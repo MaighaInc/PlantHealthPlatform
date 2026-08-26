@@ -40,3 +40,9 @@
 - Publishes `/camera/image_raw`; validation rejects blank/invalid; drops logged
 - Sample plant image for SIMULATION; USB reconnect policy documented
 
+## 2026-08-25 — PHP-06
+
+- Package `plant_health_cv`: HSV green segmentation pipeline + ROI/features/viz
+- Publishes `/camera/image_processed` and `/plant/roi`
+- Algorithm writeups in `docs/design/CV_ALGORITHMS.md`
+
