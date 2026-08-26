@@ -21,3 +21,12 @@
 - YAML + launch overrides (`publish_period_sec`, `params_file`)
 - Shared `plant_health_common` for `DEVELOPMENT_MODE` / `.env` parsing
 - Unit tests for params and runtime config
+- Committed as `427c69b`
+
+## 2026-08-25 — PHP-03
+
+- Branch `feature/php-03-virtual-sensors`
+- Package `plant_health_sensors` with VirtualSensor (noise/outlier/invalid, seeded)
+- Publishes Float32 on soil + environment topics (NaN = invalid)
+- Unit tests for determinism, clamping, invalid injection, param parsing
+

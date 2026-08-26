@@ -48,7 +48,7 @@ python -m pip install pytest
 ### Hardware-free unit tests (no ROS)
 
 ```bash
-export PYTHONPATH=ros2_ws/src/plant_health_status:shared
+export PYTHONPATH=ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:shared
 python -m pytest tests/unit -q
 # or: bash scripts/dev/run_unit_tests.sh
 ```
@@ -58,11 +58,14 @@ python -m pytest tests/unit -q
 ```bash
 cd ros2_ws
 source /opt/ros/humble/setup.bash
-colcon build --symlink-install --packages-select plant_health_status
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors
 source install/setup.bash
 ros2 launch plant_health_status status.launch.py
 # faster heartbeat without code edits:
 ros2 launch plant_health_status status.launch.py publish_period_sec:=0.5
+# virtual sensors (SIMULATION):
+ros2 launch plant_health_sensors virtual_sensors.launch.py
+ros2 launch plant_health_sensors virtual_sensors.launch.py invalid_probability:=0.1
 ```
 
 Inspect:
@@ -70,6 +73,7 @@ Inspect:
 ```bash
 ros2 topic list
 ros2 topic echo /system/status
+ros2 topic echo /soil/moisture
 ros2 node list
 ros2 param get /status_publisher publish_period_sec
 ```
@@ -83,6 +87,11 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | Topic | Message | Package |
 |-------|---------|---------|
 | `/system/status` | `std_msgs/String` | `plant_health_status` |
+| `/soil/moisture` | `std_msgs/Float32` | `plant_health_sensors` |
+| `/environment/temperature` | `std_msgs/Float32` | `plant_health_sensors` |
+| `/environment/humidity` | `std_msgs/Float32` | `plant_health_sensors` |
+| `/environment/light` | `std_msgs/Float32` | `plant_health_sensors` |
+| `/environment/co2` | `std_msgs/Float32` | `plant_health_sensors` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -109,5 +118,5 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-03+: virtual sensors on top of this status foundation
+- PHP-04: `SensorInterface` wrapping VirtualSensor / Mock / Real adapters
 - Expand shared config.yaml for multi-package defaults

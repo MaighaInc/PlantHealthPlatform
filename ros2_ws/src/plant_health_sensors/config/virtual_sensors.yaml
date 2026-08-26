@@ -1,0 +1,10 @@
+/** Virtual sensor publisher defaults (PHP-03). */
+
+virtual_sensor_publisher:
+  ros__parameters:
+    sample_period_sec: 1.0
+    enabled_kinds: "soil_moisture,temperature,humidity,light,co2"
+    seed: 42
+    noise_std: 0.5
+    outlier_probability: 0.0
+    invalid_probability: 0.0

@@ -25,18 +25,22 @@ plant_health_bringup/
 | Topic | Type | Direction | Introduced | Notes |
 |-------|------|-----------|------------|-------|
 | `/system/status` | `std_msgs/String` | pub: `status_publisher` / sub: `status_subscriber` | PHP-01 | Heartbeat payload `state=…;seq=…;source=…;ts=…` |
+| `/soil/moisture` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | % moisture; NaN = invalid |
+| `/environment/temperature` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | °C; NaN = invalid |
+| `/environment/humidity` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | % RH; NaN = invalid |
+| `/environment/light` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | lux-like; NaN = invalid |
+| `/environment/co2` | `std_msgs/Float32` | pub: `virtual_sensor_publisher` | PHP-03 | ppm; NaN = invalid |
 
 ## Planned Topic Structure
 
 ```text
 /system/status                 ← active (PHP-01)
-
-/environment/temperature
-/environment/humidity
-/environment/pressure
-/environment/light
-
-/soil/moisture
+/soil/moisture                 ← active (PHP-03)
+/environment/temperature       ← active (PHP-03)
+/environment/humidity          ← active (PHP-03)
+/environment/light             ← active (PHP-03)
+/environment/co2               ← active (PHP-03)
+/environment/pressure          ← planned
 
 /camera/image_raw
 /camera/image_processed

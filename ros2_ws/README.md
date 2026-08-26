@@ -20,3 +20,15 @@ ros2 node list
 ```
 
 Packages live under `src/` using the `plant_health_*` namespace.
+
+Current packages:
+
+- `plant_health_status` — system heartbeat
+- `plant_health_sensors` — virtual soil/environment sensors
+
+```bash
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors
+ros2 launch plant_health_sensors virtual_sensors.launch.py
+ros2 topic echo /soil/moisture
+```
+
