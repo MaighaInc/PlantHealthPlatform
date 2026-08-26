@@ -126,3 +126,11 @@
 ## 2026-08-26 — PHP-23
 
 - docker-compose for db/api/web; ADR-0006 ROS on host
+
+## 2026-08-26 — PHP-24
+
+- E2E smoke fusion→decision→safety→MockGPIO
+
+## 2026-08-26 — PHP-25
+
+- GitHub Actions CI unit job (no Pi)
