@@ -161,7 +161,7 @@ python ml/training/train_dl.py --version 1.0.0
 
 ## Future Improvements
 
-- PHP-18: Irrigation safety system (max duration, cooldown, e-stop, fail-safe)
+- PHP-19: PostgreSQL data layer + repositories
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - ONNX backend on the inference node (artifact already exported in PHP-13)

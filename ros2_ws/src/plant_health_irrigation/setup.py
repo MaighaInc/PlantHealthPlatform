@@ -9,7 +9,10 @@ setup(
     data_files=[
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         ("share/" + package_name, ["package.xml"]),
-        ("share/" + package_name + "/launch", ["launch/irrigation.launch.py"]),
+        ("share/" + package_name + "/launch", [
+            "launch/irrigation.launch.py",
+            "launch/safety.launch.py",
+        ]),
         ("share/" + package_name + "/config", ["config/irrigation_params.yaml"]),
     ],
     install_requires=["setuptools"],
@@ -22,6 +25,7 @@ setup(
     entry_points={
         "console_scripts": [
             "irrigation_actuator = plant_health_irrigation.irrigation_node:main",
+            "irrigation_safety = plant_health_irrigation.safety_node:main",
         ],
     },
 )

@@ -103,3 +103,6 @@
 - `GPIOInterface` + `MockGPIO` (transition log) + `RaspberryPiGPIO`
 - Factory forces MockGPIO for SIMULATION/DEVELOPMENT; irrigation node uses interface only
 
+## 2026-08-26 — PHP-18
+
+- Safety gate intent→command: e-stop, invalid sensor, max duration/daily, cooldown, wet-stop; startup/shutdown OFF
