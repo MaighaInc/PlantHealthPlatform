@@ -17,6 +17,7 @@
 | [0003](./0003-irrigation-intent-topic.md) | Irrigation intent topic separate from command | Accepted | 2026-08-25 |
 | [0004](./0004-backend-fastapi-sqlalchemy.md) | Backend: FastAPI + SQLAlchemy + PostgreSQL | Accepted | 2026-08-26 |
 | [0005](./0005-realtime-sse.md) | Real-time transport: SSE | Accepted | 2026-08-26 |
+| [0006](./0006-ros-on-host-docker-server.md) | ROS on host; Docker for server tier | Accepted | 2026-08-26 |
 
 ---
 

@@ -122,3 +122,7 @@
 ## 2026-08-26 — PHP-22
 
 - ADR-0005 SSE; /api/stream/events; dashboard EventSource live seq
+
+## 2026-08-26 — PHP-23
+
+- docker-compose for db/api/web; ADR-0006 ROS on host

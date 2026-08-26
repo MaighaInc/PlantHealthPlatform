@@ -56,5 +56,6 @@ Each milestone plan should include:
 | PHP-20 | [PHP-20-rest-api.md](./PHP-20-rest-api.md) | Complete |
 | PHP-21 | [PHP-21-react-dashboard.md](./PHP-21-react-dashboard.md) | Complete |
 | PHP-22 | [PHP-22-realtime-sse.md](./PHP-22-realtime-sse.md) | Complete |
+| PHP-23 | [PHP-23-dockerization.md](./PHP-23-dockerization.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

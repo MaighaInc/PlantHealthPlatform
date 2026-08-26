@@ -119,6 +119,14 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
+## Server tier (Docker)
+
+```bash
+docker compose up --build
+# API :8000  UI :8080  Postgres :5432
+# ROS remains on host/WSL (ADR-0006)
+```
+
 ## Testing
 
 See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses on pure-Python heartbeat tests plus ROS launch smoke on a Humble host.
