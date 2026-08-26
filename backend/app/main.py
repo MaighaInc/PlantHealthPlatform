@@ -193,3 +193,29 @@ def system_status() -> StatusOut:
 @app.get("/health")
 def health() -> dict:
     return {"ok": True}
+
+
+@app.get("/api/stream/events")
+async def stream_events():
+    """SSE stream of system heartbeats (PHP-22 / ADR-0005)."""
+    import asyncio
+    import json
+    from datetime import datetime, timezone
+
+    from fastapi.responses import StreamingResponse
+
+    async def gen():
+        seq = 0
+        while True:
+            seq += 1
+            payload = {
+                "type": "heartbeat",
+                "seq": seq,
+                "timestamp": datetime.now(timezone.utc).strftime(
+                    "%Y-%m-%dT%H:%M:%S.%fZ"
+                ),
+            }
+            yield f"data: {json.dumps(payload)}\n\n"
+            await asyncio.sleep(2.0)
+
+    return StreamingResponse(gen(), media_type="text/event-stream")

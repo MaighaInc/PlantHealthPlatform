@@ -118,3 +118,7 @@
 ## 2026-08-26 — PHP-21
 
 - Vite/React dashboard: Dashboard, Plant Detail, Irrigation, ML pages with typed API client
+
+## 2026-08-26 — PHP-22
+
+- ADR-0005 SSE; /api/stream/events; dashboard EventSource live seq
