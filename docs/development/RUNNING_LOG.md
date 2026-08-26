@@ -134,3 +134,18 @@
 ## 2026-08-26 — PHP-25
 
 - GitHub Actions CI unit job (no Pi)
+
+## 2026-08-26 — PHP-26
+- Structured logs + metrics registry; /api/system/metrics
+
+## 2026-08-26 — PHP-27
+- PRODUCTION bearer auth for manual irrigation
+
+## 2026-08-26 — PHP-28
+- Edge/Pi deployment doc
+
+## 2026-08-26 — PHP-29
+- plant_health_bringup unified launch
+
+## 2026-08-26 — PHP-30
+- Capstone runbook for scenarios 1–5

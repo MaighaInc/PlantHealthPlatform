@@ -59,5 +59,10 @@ Each milestone plan should include:
 | PHP-23 | [PHP-23-dockerization.md](./PHP-23-dockerization.md) | Complete |
 | PHP-24 | [PHP-24-testing-expansion.md](./PHP-24-testing-expansion.md) | Complete |
 | PHP-25 | [PHP-25-cicd.md](./PHP-25-cicd.md) | Complete |
+| PHP-26 | [PHP-26-observability.md](./PHP-26-observability.md) | Complete |
+| PHP-27 | [PHP-27-security.md](./PHP-27-security.md) | Complete |
+| PHP-28 | [PHP-28-edge-deployment.md](./PHP-28-edge-deployment.md) | Complete |
+| PHP-29 | [PHP-29-e2e-integration.md](./PHP-29-e2e-integration.md) | Complete |
+| PHP-30 | [PHP-30-capstone.md](./PHP-30-capstone.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

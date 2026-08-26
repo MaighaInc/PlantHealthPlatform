@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from typing import Annotated
 
-from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, Header, HTTPException, Query
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
@@ -160,8 +160,17 @@ def irrigation_events(db: Db, limit: int = Query(50, ge=1, le=200)) -> list[Irri
 
 
 @app.post("/api/irrigation/manual", response_model=IrrigationEventOut, status_code=201)
-def manual_irrigation(body: ManualIrrigationIn, db: Db) -> IrrigationEventOut:
-    # Auth enforced in PHP-27; DEVELOPMENT allows
+def manual_irrigation(
+    body: ManualIrrigationIn,
+    db: Db,
+    authorization: Annotated[str | None, Header()] = None,
+) -> IrrigationEventOut:
+    from app.security import AuthError, require_actuator_auth
+
+    try:
+        require_actuator_auth(authorization_header=authorization)
+    except AuthError as exc:
+        raise HTTPException(status_code=401, detail=str(exc)) from exc
     event = IrrigationService(IrrigationEventRepo(db)).manual(
         water=body.water, reason=body.reason, plant_id=body.plant_id
     )
@@ -193,6 +202,16 @@ def system_status() -> StatusOut:
 @app.get("/health")
 def health() -> dict:
     return {"ok": True}
+
+
+@app.get("/api/system/metrics")
+def system_metrics() -> dict:
+    try:
+        from plant_health_common.observability import METRICS
+
+        return METRICS.snapshot()
+    except Exception:
+        return {"counters": {}, "gauges": {}, "sensor_keys": []}
 
 
 @app.get("/api/stream/events")
