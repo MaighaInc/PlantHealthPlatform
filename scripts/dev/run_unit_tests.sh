@@ -3,5 +3,5 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
-export PYTHONPATH="${ROOT}/ros2_ws/src/plant_health_status:${ROOT}/ros2_ws/src/plant_health_sensors:${ROOT}/ros2_ws/src/plant_health_camera:${ROOT}/ros2_ws/src/plant_health_cv:${ROOT}/shared${PYTHONPATH:+:${PYTHONPATH}}"
+export PYTHONPATH="${ROOT}/ros2_ws/src/plant_health_status:${ROOT}/ros2_ws/src/plant_health_sensors:${ROOT}/ros2_ws/src/plant_health_camera:${ROOT}/ros2_ws/src/plant_health_cv:${ROOT}/ml:${ROOT}/shared${PYTHONPATH:+:${PYTHONPATH}}"
 python -m pytest tests/unit -q "$@"

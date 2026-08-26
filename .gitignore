@@ -15,7 +15,9 @@ log/
 # ML / datasets (large artifacts — use DVC or external storage later)
 ml/models/*.pt
 ml/models/*.onnx
-ml/datasets/images/
+ml/datasets/**/images/
+ml/datasets/**/metadata/records.jsonl
+!ml/datasets/**/.gitkeep
 
 # Node (future frontend/backend)
 node_modules/

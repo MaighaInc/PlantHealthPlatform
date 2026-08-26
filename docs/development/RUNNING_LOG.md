@@ -46,3 +46,8 @@
 - Publishes `/camera/image_processed` and `/plant/roi`
 - Algorithm writeups in `docs/design/CV_ALGORITHMS.md`
 
+## 2026-08-25 — PHP-07
+
+- `ml/plant_health_data` DatasetLogger with manifests; no silent overwrite
+- ROS package `plant_health_dataset` logs `/camera/image_raw` + latest sensors
+

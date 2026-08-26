@@ -48,7 +48,22 @@ Use synchronization windows; document clock differences and delayed messages.
 
 Reproducible datasets — do not rely on manual filenames.
 
-Manifest-driven splits for train/test/validation.
+Layout (PHP-07):
+
+```text
+ml/datasets/<name>/
+├── images/
+├── labels/
+├── metadata/records.jsonl
+└── manifests/manifest.json
+```
+
+- Filenames: `{plant_id}_{seq:06d}_{compact_ts}.png`
+- Never overwrite an existing image path
+- Manifest tracks `record_count` and layout paths
+- Library: `ml/plant_health_data`; ROS node: `plant_health_dataset`
+
+Manifest-driven splits for train/test/validation (later milestones).
 
 ## Data Quality Gate
 

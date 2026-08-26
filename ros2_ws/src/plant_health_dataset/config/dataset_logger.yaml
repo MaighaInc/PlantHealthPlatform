@@ -1,0 +1,8 @@
+/** Dataset logger defaults (PHP-07). */
+
+dataset_logger:
+  ros__parameters:
+    plant_id: "plant_001"
+    image_topic: "/camera/image_raw"
+    save_every_n: 5
+    # dataset_root defaults to <repo>/ml/datasets/default when unset in code

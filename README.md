@@ -48,7 +48,7 @@ python -m pip install pytest
 ### Hardware-free unit tests (no ROS)
 
 ```bash
-export PYTHONPATH=ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:ros2_ws/src/plant_health_camera:ros2_ws/src/plant_health_cv:shared
+export PYTHONPATH=ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:ros2_ws/src/plant_health_camera:ros2_ws/src/plant_health_cv:ml:shared
 python -m pytest tests/unit -q
 # or: bash scripts/dev/run_unit_tests.sh
 ```
@@ -58,7 +58,7 @@ python -m pytest tests/unit -q
 ```bash
 cd ros2_ws
 source /opt/ros/humble/setup.bash
-colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv
+colcon build --symlink-install --packages-select plant_health_status plant_health_sensors plant_health_camera plant_health_cv plant_health_dataset
 source install/setup.bash
 ros2 launch plant_health_status status.launch.py
 # faster heartbeat without code edits:
@@ -70,6 +70,8 @@ ros2 launch plant_health_sensors virtual_sensors.launch.py invalid_probability:=
 ros2 launch plant_health_camera camera.launch.py development_mode:=SIMULATION
 # OpenCV pipeline:
 ros2 launch plant_health_cv cv.launch.py
+# dataset logger:
+ros2 launch plant_health_dataset dataset_logger.launch.py plant_id:=plant_001
 ```
 
 Inspect:
@@ -127,6 +129,6 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-07: image dataset logger with manifests
+- PHP-08: metadata synchronization windows for image + sensors
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - Expand shared config.yaml for multi-package defaults
