@@ -61,3 +61,8 @@
 - Package `plant_health_health`: configurable rules → `/plant/health`
 - Table-driven tests; dry+hot → water_stress; invalid → unknown; no GPIO
 
+## 2026-08-25 — PHP-10
+
+- Feature schema v1.0 + `feature_publisher` → `/plant/features`
+- Golden fixture stability tests; vision + sensor keys documented
+

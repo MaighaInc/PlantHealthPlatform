@@ -34,6 +34,7 @@ plant_health_bringup/
 | `/camera/image_processed` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Viz overlay (contours/bbox) |
 | `/plant/roi` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Cropped largest green region |
 | `/plant/health` | `std_msgs/String` | pub: `health_engine` | PHP-09 | `status=…;score=…;reason=…;confidence=…;ts=…` |
+| `/plant/features` | `std_msgs/String` | pub: `feature_publisher` | PHP-10 | JSON feature vector schema v1.0 |
 
 ## Planned Topic Structure
 
@@ -49,7 +50,7 @@ plant_health_bringup/
 /camera/image_processed        ← active (PHP-06)
 /plant/roi                     ← active (PHP-06)
 /plant/health                  ← active (PHP-09)
-/plant/features                ← planned (PHP-10)
+/plant/features                ← active (PHP-10)
 /plant/disease_prediction
 
 /irrigation/command

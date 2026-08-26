@@ -1,0 +1,13 @@
+/** Feature publisher defaults (PHP-10). */
+
+feature_publisher:
+  ros__parameters:
+    image_topic: "/camera/image_raw"
+    features_topic: "/plant/features"
+    process_width: 320
+    process_height: 240
+    blur_ksize: 5
+    h_min: 35
+    h_max: 85
+    s_min: 40
+    v_min: 40

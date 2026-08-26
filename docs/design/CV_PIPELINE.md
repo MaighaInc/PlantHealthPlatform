@@ -38,6 +38,8 @@ Visualization
 
 ## Potential Features
 
+See authoritative schema: [FEATURE_SCHEMA.md](./FEATURE_SCHEMA.md) (PHP-10).
+
 ```text
 leaf_area
 green_pixel_ratio
@@ -47,6 +49,7 @@ mean_value
 contour_area
 bounding_box
 centroid
++ soil_moisture, temperature, humidity, light, co2
 ```
 
 ## Learning Requirement

@@ -10,7 +10,10 @@ setup(
         ("share/ament_index/resource_index/packages", ["resource/" + package_name]),
         ("share/" + package_name, ["package.xml"]),
         ("share/" + package_name + "/launch", ["launch/cv.launch.py"]),
-        ("share/" + package_name + "/config", ["config/cv_params.yaml"]),
+        (
+            "share/" + package_name + "/config",
+            ["config/cv_params.yaml", "config/features_params.yaml"],
+        ),
     ],
     install_requires=["setuptools"],
     zip_safe=True,
@@ -22,6 +25,7 @@ setup(
     entry_points={
         "console_scripts": [
             "cv_pipeline = plant_health_cv.cv_node:main",
+            "feature_publisher = plant_health_cv.features_node:main",
         ],
     },
 )

@@ -44,6 +44,7 @@ Every AI agent **must read these documents before writing code**, in this order:
 | [design/ROS_ARCHITECTURE.md](./design/ROS_ARCHITECTURE.md) | Topics, messages, bringup, node boundaries |
 | [design/CV_PIPELINE.md](./design/CV_PIPELINE.md) | OpenCV processing pipeline and learning requirements |
 | [design/CV_ALGORITHMS.md](./design/CV_ALGORITHMS.md) | Per-algorithm Problem/Why/Tradeoffs (PHP-06) |
+| [design/FEATURE_SCHEMA.md](./design/FEATURE_SCHEMA.md) | `/plant/features` schema v1.0 (PHP-10) |
 | [design/ML_PIPELINE.md](./design/ML_PIPELINE.md) | ML lifecycle, versioning, leakage, inference |
 | [design/DATA_PIPELINE.md](./design/DATA_PIPELINE.md) | Sensors → ROS → DB; timestamps; datasets |
 | [design/DATABASE.md](./design/DATABASE.md) | PostgreSQL entities and migration policy |

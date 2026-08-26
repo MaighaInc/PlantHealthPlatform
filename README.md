@@ -75,6 +75,9 @@ ros2 launch plant_health_dataset dataset_logger.launch.py plant_id:=plant_001
 # rule-based health:
 ros2 launch plant_health_health health.launch.py
 ros2 topic echo /plant/health
+# features (launched with CV):
+ros2 launch plant_health_cv cv.launch.py
+ros2 topic echo /plant/features
 ```
 
 Inspect:
@@ -107,6 +110,7 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/camera/image_processed` | `sensor_msgs/Image` | `plant_health_cv` |
 | `/plant/roi` | `sensor_msgs/Image` | `plant_health_cv` |
 | `/plant/health` | `std_msgs/String` | `plant_health_health` |
+| `/plant/features` | `std_msgs/String` (JSON) | `plant_health_cv` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -133,6 +137,6 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-10: publish `/plant/features` feature vector
+- PHP-11: classical ML baseline on feature vectors
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
