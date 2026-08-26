@@ -129,6 +129,6 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 ## Future Improvements
 
-- PHP-08: metadata synchronization windows for image + sensors
+- PHP-09: rule-based plant health engine
+- Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
-- Expand shared config.yaml for multi-package defaults

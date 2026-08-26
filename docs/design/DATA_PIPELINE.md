@@ -42,7 +42,26 @@ Combine:
 image + sensor measurements + timestamps + plant metadata
 ```
 
-Use synchronization windows; document clock differences and delayed messages.
+### Join algorithm
+
+For each sensor channel, select the sample with minimum `|t_sensor − t_image|` **only if** that delta is within `sync_window_sec`. Otherwise store `null` and list the channel under `missing` (and `stale_candidates` if out-of-window samples existed).
+
+Logged in dataset `extra`:
+
+```text
+sensor_sync=acquisition_window_php08
+sync_status=complete|partial|none
+missing_sensors, stale_candidates, sensor_deltas_sec, …
+```
+
+### Clock assumptions
+
+1. Prefer acquisition timestamps on each sample.
+2. Never assume message arrival time == measurement time.
+3. Bare `std_msgs/Float32` sensor topics have no header — the ROS dataset logger stamps them as `receive_approx` with the local ROS clock (acceptable for same-host SIMULATION; replace with stamped messages for distributed hardware).
+4. Image time uses `sensor_msgs/Image.header.stamp`.
+
+Library: `ml/plant_health_data/sync.py`.
 
 ## Dataset Management
 

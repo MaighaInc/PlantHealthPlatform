@@ -51,3 +51,8 @@
 - `ml/plant_health_data` DatasetLogger with manifests; no silent overwrite
 - ROS package `plant_health_dataset` logs `/camera/image_raw` + latest sensors
 
+## 2026-08-25 — PHP-08
+
+- Acquisition-time sync windows (`SensorTimeBuffer`); delayed samples not silently joined
+- Dataset logger records sync_status / missing / deltas in metadata
+

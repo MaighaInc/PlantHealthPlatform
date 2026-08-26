@@ -41,5 +41,6 @@ Each milestone plan should include:
 | PHP-05 | [PHP-05-camera-integration.md](./PHP-05-camera-integration.md) | Complete |
 | PHP-06 | [PHP-06-opencv-pipeline.md](./PHP-06-opencv-pipeline.md) | Complete |
 | PHP-07 | [PHP-07-dataset-logger.md](./PHP-07-dataset-logger.md) | Complete |
+| PHP-08 | [PHP-08-metadata-sync.md](./PHP-08-metadata-sync.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

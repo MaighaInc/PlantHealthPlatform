@@ -1,4 +1,4 @@
-"""ROS node that logs /camera/image_raw into ml/datasets with manifests."""
+"""ROS node that logs /camera/image_raw with acquisition-time sensor sync (PHP-08)."""
 
 from __future__ import annotations
 
@@ -13,48 +13,59 @@ from rclpy.node import Node
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float32
 
-# repo_root/ml on PYTHONPATH for plant_health_data library
 _REPO_ROOT = Path(__file__).resolve().parents[4]
 _ML_ROOT = _REPO_ROOT / "ml"
 if _ML_ROOT.is_dir() and str(_ML_ROOT) not in sys.path:
     sys.path.insert(0, str(_ML_ROOT))
 
-from plant_health_data import DatasetLogger, DatasetLoggerError  # noqa: E402
+from plant_health_data import (  # noqa: E402
+    DatasetLogger,
+    DatasetLoggerError,
+    SensorTimeBuffer,
+    TimedSample,
+)
+
+_CHANNELS = (
+    "soil_moisture",
+    "temperature",
+    "humidity",
+    "light",
+    "co2",
+)
 
 
 class DatasetLoggerNode(Node):
     """
-    Persist camera frames + optional latest sensor snapshot.
+    Persist camera frames joined to sensors via sync windows.
 
-    Sensor fields may be missing until PHP-08 synchronization; missing values
-    are stored as null (never invented).
+    Float32 sensor topics lack headers; samples are stamped with the local ROS
+    clock as ``receive_approx`` (see docs/design/DATA_PIPELINE.md). Image times
+    use ``Image.header.stamp`` (acquisition/publish stamp from camera node).
     """
 
     def __init__(self) -> None:
         super().__init__("dataset_logger")
         self._bridge = CvBridge()
-        self._latest: dict[str, float | None] = {
-            "soil_moisture": None,
-            "temperature": None,
-            "humidity": None,
-            "light": None,
-            "co2": None,
-        }
+        self._buffer = SensorTimeBuffer(maxlen=500)
 
         default_root = str(_REPO_ROOT / "ml" / "datasets" / "default")
         self.declare_parameter("dataset_root", default_root)
         self.declare_parameter("plant_id", "plant_001")
         self.declare_parameter("image_topic", "/camera/image_raw")
         self.declare_parameter("save_every_n", 1)
+        self.declare_parameter("sync_window_sec", 1.0)
 
         dataset_root = Path(str(self.get_parameter("dataset_root").value))
         self._plant_id = str(self.get_parameter("plant_id").value).strip()
         image_topic = str(self.get_parameter("image_topic").value)
         self._save_every_n = max(1, int(self.get_parameter("save_every_n").value))
+        self._sync_window_sec = float(self.get_parameter("sync_window_sec").value)
         self._frame_counter = 0
 
         if not self._plant_id:
             raise ValueError("plant_id must be non-empty")
+        if self._sync_window_sec < 0:
+            raise ValueError("sync_window_sec must be >= 0")
 
         try:
             self._logger = DatasetLogger(dataset_root)
@@ -81,17 +92,31 @@ class DatasetLoggerNode(Node):
 
         self.get_logger().info(
             f"Dataset logger started root={dataset_root} plant_id={self._plant_id} "
-            f"image_topic={image_topic} save_every_n={self._save_every_n}"
+            f"image_topic={image_topic} save_every_n={self._save_every_n} "
+            f"sync_window_sec={self._sync_window_sec}"
         )
+
+    def _ros_now_iso(self) -> str:
+        now = self.get_clock().now().to_msg()
+        return datetime.fromtimestamp(
+            now.sec + now.nanosec * 1e-9, tz=timezone.utc
+        ).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
     def _make_sensor_cb(self, key: str):
         def _cb(msg: Float32) -> None:
             if msg.data is None or (
                 isinstance(msg.data, float) and math.isnan(msg.data)
             ):
-                self._latest[key] = None
-            else:
-                self._latest[key] = float(msg.data)
+                return
+            # Float32 has no acquisition stamp — document as receive_approx.
+            self._buffer.add(
+                TimedSample(
+                    name=key,
+                    value=float(msg.data),
+                    timestamp_iso=self._ros_now_iso(),
+                    stamp_source="receive_approx",
+                )
+            )
 
         return _cb
 
@@ -111,28 +136,40 @@ class DatasetLoggerNode(Node):
                 stamp.sec + stamp.nanosec * 1e-9, tz=timezone.utc
             ).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
         else:
-            ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+            ts = self._ros_now_iso()
+            self.get_logger().warn(
+                "Image missing header stamp; using ROS now (not ideal acquisition time)"
+            )
+
+        sync = self._buffer.join(
+            ts, list(_CHANNELS), window_sec=self._sync_window_sec
+        )
+        if sync.missing:
+            self.get_logger().warn(
+                f"Sync incomplete status={sync.sync_status} "
+                f"missing={sync.missing} stale_candidates={sync.stale_candidates}"
+            )
 
         try:
             record = self._logger.append_record(
                 bgr,
                 plant_id=self._plant_id,
                 timestamp_iso=ts,
-                soil_moisture=self._latest["soil_moisture"],
-                temperature=self._latest["temperature"],
-                humidity=self._latest["humidity"],
-                light=self._latest["light"],
-                co2=self._latest["co2"],
+                soil_moisture=sync.values.get("soil_moisture"),
+                temperature=sync.values.get("temperature"),
+                humidity=sync.values.get("humidity"),
+                light=sync.values.get("light"),
+                co2=sync.values.get("co2"),
                 camera_source=msg.header.frame_id or None,
                 frame_id=self._frame_counter,
-                extra={"sensor_sync": "latest_snapshot_php07"},
+                extra=sync.to_metadata(),
             )
         except DatasetLoggerError as exc:
             self.get_logger().error(f"dataset log failed: {exc}")
             return
 
         self.get_logger().info(
-            f"Logged {record.image} plant_id={record.plant_id} "
+            f"Logged {record.image} sync={sync.sync_status} "
             f"manifest_count={self._logger.load_manifest().record_count}"
         )
 
