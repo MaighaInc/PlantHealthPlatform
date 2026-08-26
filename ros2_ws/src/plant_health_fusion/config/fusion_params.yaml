@@ -1,0 +1,9 @@
+/** Fusion node defaults (PHP-15). */
+plant_health_fusion:
+  ros__parameters:
+    health_topic: "/plant/health"
+    features_topic: "/plant/features"
+    prediction_topic: "/plant/disease_prediction"
+    fused_topic: "/plant/fused_health"
+    publish_period_sec: 1.0
+    green_stress_threshold: 0.08

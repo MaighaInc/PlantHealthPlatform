@@ -112,6 +112,7 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/plant/health` | `std_msgs/String` | `plant_health_health` |
 | `/plant/features` | `std_msgs/String` (JSON) | `plant_health_cv` |
 | `/plant/disease_prediction` | `std_msgs/String` (JSON) | `plant_health_inference` |
+| `/plant/fused_health` | `std_msgs/String` (JSON) | `plant_health_fusion` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -156,7 +157,7 @@ python ml/training/train_dl.py --version 1.0.0
 
 ## Future Improvements
 
-- PHP-15: Sensor fusion into unified health for decision consumers
+- PHP-16: Irrigation decision engine (intent only — never GPIO)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - ONNX backend on the inference node (artifact already exported in PHP-13)

@@ -36,6 +36,7 @@ plant_health_bringup/
 | `/plant/health` | `std_msgs/String` | pub: `health_engine` | PHP-09 | `status=…;score=…;reason=…;confidence=…;ts=…` |
 | `/plant/features` | `std_msgs/String` | pub: `feature_publisher` | PHP-10 | JSON feature vector schema v1.0 |
 | `/plant/disease_prediction` | `std_msgs/String` | pub: `inference_engine` | PHP-14 | JSON prediction + confidence + model version + latency |
+| `/plant/fused_health` | `std_msgs/String` | pub: `fusion_engine` | PHP-15 | JSON fused status for decision consumers |
 
 ## Planned Topic Structure
 
@@ -53,6 +54,7 @@ plant_health_bringup/
 /plant/health                  ← active (PHP-09)
 /plant/features                ← active (PHP-10)
 /plant/disease_prediction      ← active (PHP-14)
+/plant/fused_health            ← active (PHP-15)
 
 /irrigation/command
 /irrigation/status

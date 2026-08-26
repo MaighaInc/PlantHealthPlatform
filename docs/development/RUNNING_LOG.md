@@ -88,3 +88,8 @@
 - Mock + joblib backends; confidence gate → unknown; no GPIO/training
 - Scenario 4 SIMULATION path covered by unit tests
 
+## 2026-08-25 — PHP-15
+
+- Package `plant_health_fusion`: rules + features + ML → `/plant/fused_health`
+- Conflict healthy vs stressed → unknown; decision engine has one subscription interface
+

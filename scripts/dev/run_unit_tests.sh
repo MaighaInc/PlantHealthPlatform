@@ -13,5 +13,5 @@ else
   PYTHON="${PYTHON:-python}"
 fi
 
-export PYTHONPATH="${ROOT}/ros2_ws/src/plant_health_status:${ROOT}/ros2_ws/src/plant_health_sensors:${ROOT}/ros2_ws/src/plant_health_camera:${ROOT}/ros2_ws/src/plant_health_cv:${ROOT}/ros2_ws/src/plant_health_health:${ROOT}/ros2_ws/src/plant_health_inference:${ROOT}/ml:${ROOT}/shared${PYTHONPATH:+:${PYTHONPATH}}"
+export PYTHONPATH="${ROOT}/ros2_ws/src/plant_health_status:${ROOT}/ros2_ws/src/plant_health_sensors:${ROOT}/ros2_ws/src/plant_health_camera:${ROOT}/ros2_ws/src/plant_health_cv:${ROOT}/ros2_ws/src/plant_health_health:${ROOT}/ros2_ws/src/plant_health_inference:${ROOT}/ros2_ws/src/plant_health_fusion:${ROOT}/ml:${ROOT}/shared${PYTHONPATH:+:${PYTHONPATH}}"
 "${PYTHON}" -m pytest tests/unit -q "$@"
