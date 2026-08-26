@@ -105,16 +105,23 @@ Do not force a diagnosis when evidence is insufficient.
 
 ## Inference Node Responsibilities
 
-1. Subscribe to images
+1. Subscribe to feature vectors (`/plant/features`) — image subscribe optional later
 2. Validate and preprocess
-3. Run inference
+3. Run inference (mock / joblib; ONNX optional later)
 4. Produce prediction + confidence
 5. Record model version
 6. Measure inference latency
-7. Publish prediction
-8. Handle failures safely
+7. Publish `/plant/disease_prediction`
+8. Handle failures safely (`unknown` on low confidence)
 
 Must **not** train models, manipulate GPIO, own DB schema, or control frontend.
+
+### Online inference (PHP-14)
+
+- Package: `plant_health_inference` / executable `inference_engine`
+- SIMULATION default backend: `mock`
+- Classical: `backend:=joblib` + `model_path` to `plant-health-classifier-*.joblib`
+- Confidence gate: `confidence < threshold` → `unknown`
 
 ## Evaluation Metrics
 

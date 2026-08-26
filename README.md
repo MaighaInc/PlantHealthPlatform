@@ -111,6 +111,7 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/plant/roi` | `sensor_msgs/Image` | `plant_health_cv` |
 | `/plant/health` | `std_msgs/String` | `plant_health_health` |
 | `/plant/features` | `std_msgs/String` (JSON) | `plant_health_cv` |
+| `/plant/disease_prediction` | `std_msgs/String` (JSON) | `plant_health_inference` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -155,6 +156,7 @@ python ml/training/train_dl.py --version 1.0.0
 
 ## Future Improvements
 
-- PHP-14: ROS AI inference node (joblib and/or ONNX under SIMULATION)
+- PHP-15: Sensor fusion into unified health for decision consumers
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
+- ONNX backend on the inference node (artifact already exported in PHP-13)

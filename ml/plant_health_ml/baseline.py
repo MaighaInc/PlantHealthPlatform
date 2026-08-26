@@ -121,11 +121,25 @@ def load_baseline(model_path: Path) -> dict[str, Any]:
     return payload
 
 
-def predict_label(payload: dict[str, Any], features: dict[str, float | None]) -> str:
+def predict_with_confidence(
+    payload: dict[str, Any], features: dict[str, float | None]
+) -> tuple[str, float]:
+    """Return (label, confidence) using ``predict_proba`` when available."""
     keys = list(payload["feature_keys"])
     row = np.asarray(
         [[float(features[k]) if features.get(k) is not None else 0.0 for k in keys]],
         dtype=np.float64,
     )
-    pred = payload["pipeline"].predict(row)[0]
-    return str(pred)
+    pipeline = payload["pipeline"]
+    if hasattr(pipeline, "predict_proba"):
+        proba = pipeline.predict_proba(row)[0]
+        classes = list(pipeline.classes_)
+        idx = int(np.argmax(proba))
+        return str(classes[idx]), float(proba[idx])
+    pred = pipeline.predict(row)[0]
+    return str(pred), 1.0
+
+
+def predict_label(payload: dict[str, Any], features: dict[str, float | None]) -> str:
+    label, _ = predict_with_confidence(payload, features)
+    return label

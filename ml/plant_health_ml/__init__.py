@@ -6,6 +6,7 @@ from plant_health_ml.baseline import (
     TrainedBaseline,
     load_baseline,
     predict_label,
+    predict_with_confidence,
     train_baseline,
 )
 from plant_health_ml.dl_train import (
@@ -35,6 +36,7 @@ __all__ = [
     "load_onnx_session",
     "plant_group_split",
     "predict_label",
+    "predict_with_confidence",
     "records_to_matrix",
     "train_baseline",
     "train_feature_mlp",

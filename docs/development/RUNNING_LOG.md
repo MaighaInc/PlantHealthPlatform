@@ -82,3 +82,9 @@
 - Train/compare/export `plant-health-mlp-1.0.0`; registry.json; ONNX Runtime smoke load
 - Image CNN deferred until labeled image volume justifies it
 
+## 2026-08-25 — PHP-14
+
+- Package `plant_health_inference`: features → prediction JSON on `/plant/disease_prediction`
+- Mock + joblib backends; confidence gate → unknown; no GPIO/training
+- Scenario 4 SIMULATION path covered by unit tests
+

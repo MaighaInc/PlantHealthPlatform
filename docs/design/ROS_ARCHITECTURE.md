@@ -35,6 +35,7 @@ plant_health_bringup/
 | `/plant/roi` | `sensor_msgs/Image` | pub: `cv_pipeline` | PHP-06 | Cropped largest green region |
 | `/plant/health` | `std_msgs/String` | pub: `health_engine` | PHP-09 | `status=…;score=…;reason=…;confidence=…;ts=…` |
 | `/plant/features` | `std_msgs/String` | pub: `feature_publisher` | PHP-10 | JSON feature vector schema v1.0 |
+| `/plant/disease_prediction` | `std_msgs/String` | pub: `inference_engine` | PHP-14 | JSON prediction + confidence + model version + latency |
 
 ## Planned Topic Structure
 
@@ -51,7 +52,7 @@ plant_health_bringup/
 /plant/roi                     ← active (PHP-06)
 /plant/health                  ← active (PHP-09)
 /plant/features                ← active (PHP-10)
-/plant/disease_prediction
+/plant/disease_prediction      ← active (PHP-14)
 
 /irrigation/command
 /irrigation/status

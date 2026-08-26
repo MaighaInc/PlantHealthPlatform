@@ -1,0 +1,10 @@
+/** Inference node defaults (PHP-14). SIMULATION uses mock backend. */
+plant_health_inference:
+  ros__parameters:
+    features_topic: "/plant/features"
+    prediction_topic: "/plant/disease_prediction"
+    backend: "mock"
+    model_path: ""
+    confidence_threshold: 0.55
+    mock_label: "healthy"
+    mock_confidence: 0.95
