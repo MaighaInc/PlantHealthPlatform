@@ -95,14 +95,7 @@ Per-milestone working plans: [`milestones/`](./milestones/) (generated as work p
 
 ## Git Branch Convention
 
-```text
-feature/php-01-ros-foundation
-feature/php-03-virtual-sensors
-feature/php-06-opencv
-feature/php-11-ml-baseline
-feature/php-14-ai-inference
-feature/php-21-dashboard
-```
+Work on **`main`** only. Do not open a new branch per milestone unless explicitly requested.
 
 ## Milestone Completion
 

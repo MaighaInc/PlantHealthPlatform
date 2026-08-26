@@ -4,12 +4,7 @@
 
 ## Git
 
-Branch naming:
-
-```text
-feature/php-01-ros-foundation
-feature/php-06-opencv
-```
+**Single-branch workflow:** all milestone work lands on `main` (no per-milestone feature branches unless explicitly requested).
 
 Commit messages (meaningful):
 

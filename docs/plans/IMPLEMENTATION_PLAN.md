@@ -37,9 +37,7 @@ Follow [../development/AGENT_WORKFLOW.md](../development/AGENT_WORKFLOW.md) (Und
 
 ### Branching
 
-```text
-feature/php-NN-short-slug
-```
+**Single-branch workflow:** commit milestone work directly on `main`. Do not create `feature/php-NN-*` branches unless the user explicitly requests a separate branch.
 
 Commits: `feat|fix|test|docs(scope): message` — see [../development/CODING_STANDARDS.md](../development/CODING_STANDARDS.md).
 

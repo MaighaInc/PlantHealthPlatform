@@ -23,10 +23,8 @@
 - Unit tests for params and runtime config
 - Committed as `427c69b`
 
-## 2026-08-25 — PHP-03
+## 2026-08-25 — Branching policy
 
-- Branch `feature/php-03-virtual-sensors`
-- Package `plant_health_sensors` with VirtualSensor (noise/outlier/invalid, seeded)
-- Publishes Float32 on soil + environment topics (NaN = invalid)
-- Unit tests for determinism, clamping, invalid injection, param parsing
+- Consolidated PHP-01…PHP-03 onto `main`; deleted local/remote `feature/php-*` branches
+- Future milestones commit directly on `main`
 

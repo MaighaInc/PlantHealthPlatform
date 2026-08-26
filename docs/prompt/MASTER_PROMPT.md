@@ -1379,18 +1379,7 @@ Never expose GPIO control without proper authorization in a production deploymen
 
 Use Git throughout the project.
 
-Example:
-
-```text
-main
- │
- ├── feature/php-01-ros-foundation
- ├── feature/php-03-virtual-sensors
- ├── feature/php-06-opencv
- ├── feature/php-11-ml-baseline
- ├── feature/php-14-ai-inference
- └── feature/php-21-dashboard
-```
+**Branching:** develop on `main` by default. Do not create per-milestone feature branches unless explicitly requested.
 
 Meaningful commits:
 
