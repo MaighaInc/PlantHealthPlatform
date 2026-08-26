@@ -93,3 +93,8 @@
 - Package `plant_health_fusion`: rules + features + ML → `/plant/fused_health`
 - Conflict healthy vs stressed → unknown; decision engine has one subscription interface
 
+## 2026-08-25 — PHP-16
+
+- ADR-0003: `/irrigation/intent` for proposals; `/irrigation/command` reserved for safety/GPIO
+- Package `plant_health_decision`: fused health → intent; ML-only / unknown blocked; no GPIO imports
+

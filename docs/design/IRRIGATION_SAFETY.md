@@ -18,7 +18,20 @@ GPIO
 
 **ML inference must never directly activate physical irrigation.**
 
-## Rule-Based Health (pre-ML) — PHP-09
+## Decision Engine (PHP-16)
+
+Package `plant_health_decision` subscribes to `/plant/fused_health` and publishes **`/irrigation/intent`** (ADR-0003).
+
+| Fused status | Intent |
+|--------------|--------|
+| healthy | `water=false` |
+| stressed (rules/agree/cv) | `water=true` |
+| unknown | `water=false` |
+| stressed **ML-only** | `water=false` (`ml_only_blocked`) |
+
+Decision **never** imports GPIO and **never** publishes `/irrigation/command`.
+
+## Safety Requirements
 
 Implemented in `plant_health_health` (`evaluate_health` + `/plant/health`).
 

@@ -1,0 +1,6 @@
+/** Decision node defaults (PHP-16). Intent only — never /irrigation/command. */
+plant_health_decision:
+  ros__parameters:
+    fused_topic: "/plant/fused_health"
+    intent_topic: "/irrigation/intent"
+    publish_period_sec: 1.0

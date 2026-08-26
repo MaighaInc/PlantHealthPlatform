@@ -113,6 +113,7 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/plant/features` | `std_msgs/String` (JSON) | `plant_health_cv` |
 | `/plant/disease_prediction` | `std_msgs/String` (JSON) | `plant_health_inference` |
 | `/plant/fused_health` | `std_msgs/String` (JSON) | `plant_health_fusion` |
+| `/irrigation/intent` | `std_msgs/String` (JSON) | `plant_health_decision` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -132,6 +133,7 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 
 - [ADR-0001 — ROS 2 Humble](./docs/architecture/adr/0001-ros2-distro-humble.md)
 - [ADR-0002 — Classical before feature MLP + ONNX](./docs/architecture/adr/0002-classical-before-feature-mlp-onnx.md)
+- [ADR-0003 — Irrigation intent vs command](./docs/architecture/adr/0003-irrigation-intent-topic.md)
 
 ## Known Limitations
 
@@ -157,7 +159,7 @@ python ml/training/train_dl.py --version 1.0.0
 
 ## Future Improvements
 
-- PHP-16: Irrigation decision engine (intent only — never GPIO)
+- PHP-17: GPIO abstraction (`MockGPIO` / `RaspberryPiGPIO`)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - ONNX backend on the inference node (artifact already exported in PHP-13)

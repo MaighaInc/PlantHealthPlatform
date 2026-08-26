@@ -37,6 +37,7 @@ plant_health_bringup/
 | `/plant/features` | `std_msgs/String` | pub: `feature_publisher` | PHP-10 | JSON feature vector schema v1.0 |
 | `/plant/disease_prediction` | `std_msgs/String` | pub: `inference_engine` | PHP-14 | JSON prediction + confidence + model version + latency |
 | `/plant/fused_health` | `std_msgs/String` | pub: `fusion_engine` | PHP-15 | JSON fused status for decision consumers |
+| `/irrigation/intent` | `std_msgs/String` | pub: `decision_engine` | PHP-16 | JSON water intent proposal (ADR-0003; not GPIO) |
 
 ## Planned Topic Structure
 
@@ -55,9 +56,10 @@ plant_health_bringup/
 /plant/features                ← active (PHP-10)
 /plant/disease_prediction      ← active (PHP-14)
 /plant/fused_health            ← active (PHP-15)
+/irrigation/intent             ← active (PHP-16)
 
-/irrigation/command
-/irrigation/status
+/irrigation/command            ← planned (post-safety, PHP-18)
+/irrigation/status             ← planned
 
 /diagnostics
 ```
