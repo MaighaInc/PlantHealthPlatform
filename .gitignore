@@ -15,6 +15,9 @@ log/
 # ML / datasets (large artifacts — use DVC or external storage later)
 ml/models/*.pt
 ml/models/*.onnx
+# Keep versioned small MLP artifacts for PHP-13 / edge smoke tests
+!ml/models/plant-health-mlp-*.pt
+!ml/models/plant-health-mlp-*.onnx
 # Classical baseline .joblib may be committed when small; ignore huge dumps:
 # ml/models/*.joblib
 ml/datasets/**/images/
