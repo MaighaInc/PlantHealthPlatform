@@ -46,5 +46,6 @@ Each milestone plan should include:
 | PHP-10 | [PHP-10-feature-extraction.md](./PHP-10-feature-extraction.md) | Complete |
 | PHP-11 | [PHP-11-ml-baseline.md](./PHP-11-ml-baseline.md) | Complete |
 | PHP-12 | [PHP-12-ml-evaluation.md](./PHP-12-ml-evaluation.md) | Complete |
+| PHP-13 | [PHP-13-ml-deep-learning.md](./PHP-13-ml-deep-learning.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

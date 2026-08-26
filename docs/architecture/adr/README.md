@@ -13,6 +13,7 @@
 | ADR | Title | Status | Date |
 |-----|-------|--------|------|
 | [0001](./0001-ros2-distro-humble.md) | ROS 2 Distro: Humble Hawksbill | Accepted | 2026-08-25 |
+| [0002](./0002-classical-before-feature-mlp-onnx.md) | Classical ML before feature MLP + ONNX | Accepted | 2026-08-25 |
 
 ---
 
@@ -32,9 +33,10 @@ Create a new ADR when a decision:
 Candidates as the platform grows:
 
 - ~~ROS 2 distro selection (Humble vs Iron)~~ → ADR-0001
+- ~~Classical ML before feature MLP / ONNX~~ → ADR-0002
 - Backend stack choice (FastAPI vs Node/TS)
 - HSV segmentation vs deep-learning segmentation
-- Classical ML before CNN justification
+- Image CNN justification (deferred until labeled image volume)
 - Real-time mechanism (polling vs WebSocket vs SSE)
 - Docker scope (what runs containerized vs on host)
 

@@ -129,6 +129,7 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 ## Design Decisions
 
 - [ADR-0001 — ROS 2 Humble](./docs/architecture/adr/0001-ros2-distro-humble.md)
+- [ADR-0002 — Classical before feature MLP + ONNX](./docs/architecture/adr/0002-classical-before-feature-mlp-onnx.md)
 
 ## Known Limitations
 
@@ -144,10 +145,16 @@ python ml/training/train_baseline.py --version 1.0.0
 
 python ml/evaluation/run_evaluation.py
 # → ml/evaluation/reports/latest_baseline_eval.json (exit 2 on leakage)
+
+python ml/training/train_dl.py --version 1.0.0
+# → ml/models/plant-health-mlp-1.0.0.{pt,onnx,meta.json} + registry.json
+# On Windows, use a short-path .venv if `pip install onnx` fails (path length):
+#   python -m venv .venv && .venv/Scripts/pip install -r requirements-ml.txt
+#   bash scripts/dev/run_unit_tests.sh
 ```
 
 ## Future Improvements
 
-- PHP-13: Deep learning classifier (after ADR justifying DL vs classical)
+- PHP-14: ROS AI inference node (joblib and/or ONNX under SIMULATION)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub

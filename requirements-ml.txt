@@ -1,0 +1,11 @@
+# Optional ML stack (PHP-11…PHP-13). Prefer installing into a short-path venv on Windows:
+#   python -m venv .venv
+#   .venv/Scripts/pip install -r requirements-ml.txt
+#   .venv/Scripts/pip install opencv-python-headless pytest
+numpy>=1.26
+scikit-learn>=1.4
+joblib>=1.3
+torch>=2.0
+onnx>=1.16
+onnxruntime>=1.17
+onnxscript>=0.1

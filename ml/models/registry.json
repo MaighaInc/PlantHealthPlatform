@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "model_name": "plant-health-mlp",
+      "model_version": "1.0.0",
+      "format": "onnx",
+      "artifact": "plant-health-mlp-1.0.0.onnx",
+      "framework": "pytorch",
+      "task": "plant_health_classification",
+      "labels": [
+        "healthy",
+        "stressed",
+        "unknown"
+      ],
+      "metrics": {
+        "accuracy": 1.0,
+        "f1_macro": 1.0
+      },
+      "baseline_accuracy": 1.0,
+      "adr": "0002",
+      "registered_utc": "2026-08-26T03:17:03.864729Z"
+    },
+    {
+      "model_name": "plant-health-mlp",
+      "model_version": "1.0.0",
+      "format": "torch",
+      "artifact": "plant-health-mlp-1.0.0.pt",
+      "framework": "pytorch",
+      "task": "plant_health_classification",
+      "labels": [
+        "healthy",
+        "stressed",
+        "unknown"
+      ],
+      "adr": "0002",
+      "registered_utc": "2026-08-26T03:17:03.864729Z"
+    },
+    {
+      "model_name": "plant-health-classifier",
+      "model_version": "1.0.0",
+      "format": "joblib",
+      "artifact": "plant-health-classifier-1.0.0.joblib",
+      "framework": "sklearn",
+      "task": "plant_health_classification",
+      "labels": [
+        "healthy",
+        "stressed",
+        "unknown"
+      ],
+      "role": "classical_baseline",
+      "adr": "0002",
+      "registered_utc": "2026-08-26T03:17:03.865728Z"
+    }
+  ]
+}

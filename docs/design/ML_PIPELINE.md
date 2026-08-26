@@ -89,6 +89,14 @@ Never use ambiguous filenames like `final_final_v2_really_final.pt`.
 - Labels: `healthy` | `stressed` | `unknown`
 - Features: schema v1.0 keys from [FEATURE_SCHEMA.md](./FEATURE_SCHEMA.md)
 
+### Feature MLP + ONNX (PHP-13 / ADR-0002)
+
+- Justification: [ADR-0002](../architecture/adr/0002-classical-before-feature-mlp-onnx.md) — RF stays preferred tabular baseline; MLP adds edge ONNX path
+- Train: `python ml/training/train_dl.py --version 1.0.0`
+- Artifacts: `plant-health-mlp-<version>.pt` + `.onnx` + `.meta.json`
+- Registry: `ml/models/registry.json`
+- Image CNNs deferred until real labeled images exist
+
 ## UNKNOWN State
 
 If `confidence < threshold` → prediction = `UNKNOWN`.

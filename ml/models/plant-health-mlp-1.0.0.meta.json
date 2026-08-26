@@ -1,0 +1,144 @@
+{
+  "model_name": "plant-health-mlp",
+  "model_version": "1.0.0",
+  "algorithm": "FeatureMLP",
+  "feature_keys": [
+    "leaf_area",
+    "green_pixel_ratio",
+    "mean_hue",
+    "mean_saturation",
+    "mean_value",
+    "contour_area",
+    "bbox_x",
+    "bbox_y",
+    "bbox_w",
+    "bbox_h",
+    "centroid_x",
+    "centroid_y",
+    "soil_moisture",
+    "temperature",
+    "humidity",
+    "light",
+    "co2"
+  ],
+  "labels": [
+    "healthy",
+    "stressed",
+    "unknown"
+  ],
+  "hidden": 32,
+  "epochs": 80,
+  "seed": 42,
+  "mean": [
+    561.8090296876323,
+    0.1677770278977049,
+    32.52907534674779,
+    65.61333163046251,
+    71.22156320805398,
+    527.1598929763857,
+    0.0,
+    0.0,
+    36.78320101873876,
+    39.19762908124703,
+    73.79429366377175,
+    71.17919218562916,
+    25.056368755317276,
+    21.663825189146877,
+    29.94034545624748,
+    405.59656691449993,
+    319.8101024218147
+  ],
+  "std": [
+    583.908080912407,
+    0.18432099333428112,
+    24.358220770545636,
+    50.90385413882586,
+    56.79825940633593,
+    565.5383174569909,
+    1.0,
+    1.0,
+    35.88086763508632,
+    37.97628979992743,
+    54.84046581656828,
+    53.63773598350195,
+    24.195430245921933,
+    14.598161822460217,
+    23.773086391885492,
+    347.1835729336857,
+    221.88666341019305
+  ],
+  "n_train": 90,
+  "n_test": 30,
+  "metrics": {
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
+    "labels": [
+      "healthy",
+      "stressed",
+      "unknown"
+    ],
+    "confusion_matrix": [
+      [
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        12
+      ]
+    ],
+    "n_samples": 30
+  },
+  "baseline_metrics": {
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
+    "labels": [
+      "healthy",
+      "stressed",
+      "unknown"
+    ],
+    "confusion_matrix": [
+      [
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        12
+      ]
+    ],
+    "n_samples": 30
+  },
+  "comparison": {
+    "mlp_accuracy": 1.0,
+    "baseline_accuracy": 1.0,
+    "mlp_f1_macro": 1.0,
+    "baseline_f1_macro": 1.0,
+    "mlp_minus_baseline_accuracy": 0.0,
+    "note": "Classical RF remains the preferred tabular baseline (ADR-0002); MLP exists for ONNX edge export and Stage-4 progression."
+  },
+  "artifacts": {
+    "torch": "plant-health-mlp-1.0.0.pt",
+    "onnx": "plant-health-mlp-1.0.0.onnx"
+  },
+  "trained_utc": "2026-08-26T03:17:03.864729Z",
+  "adr": "0002"
+}

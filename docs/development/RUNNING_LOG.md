@@ -76,3 +76,9 @@
 - Plant-group split, metrics (acc/P/R/F1/confusion), leakage gate
 - Reports under `ml/evaluation/reports/`; CLI fails on intentional plant overlap
 
+## 2026-08-25 — PHP-13
+
+- ADR-0002: classical RF remains tabular baseline; feature MLP + ONNX for Stage-4/edge
+- Train/compare/export `plant-health-mlp-1.0.0`; registry.json; ONNX Runtime smoke load
+- Image CNN deferred until labeled image volume justifies it
+
