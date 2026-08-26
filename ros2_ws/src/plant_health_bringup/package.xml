@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>plant_health_bringup</name>
+  <version>0.1.0</version>
+  <description>Unified Plant Health System bringup</description>
+  <maintainer email="dev@planthealth.local">PlantHealthPlatform</maintainer>
+  <license>Proprietary</license>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>plant_health_status</exec_depend>
+  <exec_depend>plant_health_sensors</exec_depend>
+  <exec_depend>plant_health_camera</exec_depend>
+  <exec_depend>plant_health_cv</exec_depend>
+  <exec_depend>plant_health_health</exec_depend>
+  <exec_depend>plant_health_inference</exec_depend>
+  <exec_depend>plant_health_fusion</exec_depend>
+  <exec_depend>plant_health_decision</exec_depend>
+  <exec_depend>plant_health_irrigation</exec_depend>
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
