@@ -20,6 +20,10 @@ ml/models/*.onnx
 ml/datasets/**/images/
 ml/datasets/**/metadata/records.jsonl
 !ml/datasets/**/.gitkeep
+# Keep latest evaluation report; ignore stamped runs
+ml/evaluation/reports/*
+!ml/evaluation/reports/latest_baseline_eval.json
+!ml/evaluation/reports/.gitkeep
 
 # Node (future frontend/backend)
 node_modules/

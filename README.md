@@ -141,10 +141,13 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 export PYTHONPATH=ml
 python ml/training/train_baseline.py --version 1.0.0
 # → ml/models/plant-health-classifier-1.0.0.joblib (+ .meta.json)
+
+python ml/evaluation/run_evaluation.py
+# → ml/evaluation/reports/latest_baseline_eval.json (exit 2 on leakage)
 ```
 
 ## Future Improvements
 
-- PHP-12: ML evaluation pipeline (metrics + leakage checks)
+- PHP-13: Deep learning classifier (after ADR justifying DL vs classical)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub

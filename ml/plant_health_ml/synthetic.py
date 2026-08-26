@@ -15,11 +15,14 @@ def make_synthetic_records(
     *,
     n_per_class: int = 40,
     seed: int = 42,
+    unique_plants: bool = True,
 ) -> list[dict[str, Any]]:
     """
     Generate separable synthetic feature rows for healthy / stressed / unknown.
 
     Not a substitute for real plant data — used for CI and training smoke tests.
+    When ``unique_plants`` is True (default), each row gets its own ``plant_id``
+    so plant-group evaluation splits are valid.
     """
     rng = np.random.default_rng(seed)
     records: list[dict[str, Any]] = []
@@ -27,7 +30,7 @@ def make_synthetic_records(
     def _base() -> dict[str, float]:
         return {k: 0.0 for k in FEATURE_KEYS}
 
-    for _ in range(n_per_class):
+    for i in range(n_per_class):
         healthy = _base()
         healthy.update(
             {
@@ -48,7 +51,8 @@ def make_synthetic_records(
                 "co2": float(rng.uniform(380, 450)),
             }
         )
-        records.append({"features": healthy, "label": "healthy", "plant_id": "syn_h"})
+        pid_h = f"syn_h_{i}" if unique_plants else "syn_h"
+        records.append({"features": healthy, "label": "healthy", "plant_id": pid_h})
 
         stressed = _base()
         stressed.update(
@@ -70,7 +74,8 @@ def make_synthetic_records(
                 "co2": float(rng.uniform(400, 600)),
             }
         )
-        records.append({"features": stressed, "label": "stressed", "plant_id": "syn_s"})
+        pid_s = f"syn_s_{i}" if unique_plants else "syn_s"
+        records.append({"features": stressed, "label": "stressed", "plant_id": pid_s})
 
         unknown = _base()
         # Near-zero / inconsistent features → unknown class cluster
@@ -86,7 +91,8 @@ def make_synthetic_records(
         # Use fill later; store explicit weird but finite values for unknown
         unknown["soil_moisture"] = float(rng.uniform(0, 1))
         unknown["temperature"] = float(rng.uniform(0, 5))
-        records.append({"features": unknown, "label": "unknown", "plant_id": "syn_u"})
+        pid_u = f"syn_u_{i}" if unique_plants else "syn_u"
+        records.append({"features": unknown, "label": "unknown", "plant_id": pid_u})
 
     assert set(LABELS) <= {r["label"] for r in records}
     return records

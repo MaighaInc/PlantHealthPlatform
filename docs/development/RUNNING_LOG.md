@@ -71,3 +71,8 @@
 - Classical baseline RandomForest trainer + versioned joblib/meta under `ml/models/`
 - Synthetic JSONL fixture path; preprocess + smoke-train tests
 
+## 2026-08-25 — PHP-12
+
+- Plant-group split, metrics (acc/P/R/F1/confusion), leakage gate
+- Reports under `ml/evaluation/reports/`; CLI fails on intentional plant overlap
+

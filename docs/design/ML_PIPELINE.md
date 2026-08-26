@@ -114,6 +114,14 @@ Track: accuracy, precision, recall, F1, confusion matrix, inference latency, mod
 
 When classes are imbalanced, accuracy alone is insufficient — use ROC-AUC / PR-AUC where appropriate.
 
+### Evaluation pipeline (PHP-12)
+
+- Split: **plant-group** (`plant_id` must not appear in both train and test)
+- CLI: `python ml/evaluation/run_evaluation.py`
+- Reports: `ml/evaluation/reports/*.json`
+- Leakage gate fails on plant overlap or identical feature fingerprints across the split
+- Metrics written: accuracy, macro precision/recall/F1, confusion matrix
+
 ## Related Docs
 
 - [SYSTEM_BOUNDARIES.md](./SYSTEM_BOUNDARIES.md)
