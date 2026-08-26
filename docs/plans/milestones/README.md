@@ -52,5 +52,6 @@ Each milestone plan should include:
 | PHP-16 | [PHP-16-irrigation-decision.md](./PHP-16-irrigation-decision.md) | Complete |
 | PHP-17 | [PHP-17-gpio-abstraction.md](./PHP-17-gpio-abstraction.md) | Complete |
 | PHP-18 | [PHP-18-irrigation-safety.md](./PHP-18-irrigation-safety.md) | Complete |
+| PHP-19 | [PHP-19-postgresql-data-layer.md](./PHP-19-postgresql-data-layer.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

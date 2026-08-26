@@ -15,6 +15,7 @@
 | [0001](./0001-ros2-distro-humble.md) | ROS 2 Distro: Humble Hawksbill | Accepted | 2026-08-25 |
 | [0002](./0002-classical-before-feature-mlp-onnx.md) | Classical ML before feature MLP + ONNX | Accepted | 2026-08-25 |
 | [0003](./0003-irrigation-intent-topic.md) | Irrigation intent topic separate from command | Accepted | 2026-08-25 |
+| [0004](./0004-backend-fastapi-sqlalchemy.md) | Backend: FastAPI + SQLAlchemy + PostgreSQL | Accepted | 2026-08-26 |
 
 ---
 
