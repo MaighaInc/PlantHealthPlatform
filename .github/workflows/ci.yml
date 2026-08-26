@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: |
+          python -m pip install -U pip
+          pip install pytest numpy scikit-learn joblib sqlalchemy fastapi httpx pydantic
+          # torch/onnx optional — skip DL export if missing
+      - name: Unit tests (hardware-free)
+        env:
+          PYTHONPATH: ros2_ws/src/plant_health_status:ros2_ws/src/plant_health_sensors:ros2_ws/src/plant_health_camera:ros2_ws/src/plant_health_cv:ros2_ws/src/plant_health_health:ros2_ws/src/plant_health_inference:ros2_ws/src/plant_health_fusion:ros2_ws/src/plant_health_decision:ros2_ws/src/plant_health_irrigation:ml:shared:backend
+        run: python -m pytest tests/unit -q -m "not ros"
