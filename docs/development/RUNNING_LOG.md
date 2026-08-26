@@ -114,3 +114,7 @@
 ## 2026-08-26 — PHP-20
 
 - FastAPI app with plants/sensors/health/irrigation/models/status; OpenAPI /docs; TestClient tests
+
+## 2026-08-26 — PHP-21
+
+- Vite/React dashboard: Dashboard, Plant Detail, Irrigation, ML pages with typed API client
