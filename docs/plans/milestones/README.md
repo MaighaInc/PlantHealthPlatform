@@ -44,5 +44,6 @@ Each milestone plan should include:
 | PHP-08 | [PHP-08-metadata-sync.md](./PHP-08-metadata-sync.md) | Complete |
 | PHP-09 | [PHP-09-health-rules.md](./PHP-09-health-rules.md) | Complete |
 | PHP-10 | [PHP-10-feature-extraction.md](./PHP-10-feature-extraction.md) | Complete |
+| PHP-11 | [PHP-11-ml-baseline.md](./PHP-11-ml-baseline.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

@@ -66,3 +66,8 @@
 - Feature schema v1.0 + `feature_publisher` → `/plant/features`
 - Golden fixture stability tests; vision + sensor keys documented
 
+## 2026-08-25 — PHP-11
+
+- Classical baseline RandomForest trainer + versioned joblib/meta under `ml/models/`
+- Synthetic JSONL fixture path; preprocess + smoke-train tests
+

@@ -81,6 +81,14 @@ Every inference must identify the model:
 
 Never use ambiguous filenames like `final_final_v2_really_final.pt`.
 
+### Classical baseline (PHP-11)
+
+- Train: `python ml/training/train_baseline.py --version 1.0.0`
+- Artifacts: `ml/models/plant-health-classifier-<version>.joblib` + `.meta.json`
+- Algorithm: `StandardScaler` + `RandomForestClassifier`
+- Labels: `healthy` | `stressed` | `unknown`
+- Features: schema v1.0 keys from [FEATURE_SCHEMA.md](./FEATURE_SCHEMA.md)
+
 ## UNKNOWN State
 
 If `confidence < threshold` → prediction = `UNKNOWN`.

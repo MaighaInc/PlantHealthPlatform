@@ -135,8 +135,16 @@ See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses
 - Full ROS launch smoke is not runnable on native Windows without WSL.
 - `/system/status` uses `std_msgs/String` until a richer custom message is justified.
 
+## Machine learning (offline)
+
+```bash
+export PYTHONPATH=ml
+python ml/training/train_baseline.py --version 1.0.0
+# → ml/models/plant-health-classifier-1.0.0.joblib (+ .meta.json)
+```
+
 ## Future Improvements
 
-- PHP-11: classical ML baseline on feature vectors
+- PHP-12: ML evaluation pipeline (metrics + leakage checks)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub

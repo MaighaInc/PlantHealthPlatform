@@ -15,6 +15,8 @@ log/
 # ML / datasets (large artifacts — use DVC or external storage later)
 ml/models/*.pt
 ml/models/*.onnx
+# Classical baseline .joblib may be committed when small; ignore huge dumps:
+# ml/models/*.joblib
 ml/datasets/**/images/
 ml/datasets/**/metadata/records.jsonl
 !ml/datasets/**/.gitkeep

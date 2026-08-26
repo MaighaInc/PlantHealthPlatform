@@ -1,0 +1,34 @@
+{
+  "model_name": "plant-health-classifier",
+  "model_version": "1.0.0",
+  "algorithm": "RandomForestClassifier",
+  "feature_keys": [
+    "leaf_area",
+    "green_pixel_ratio",
+    "mean_hue",
+    "mean_saturation",
+    "mean_value",
+    "contour_area",
+    "bbox_x",
+    "bbox_y",
+    "bbox_w",
+    "bbox_h",
+    "centroid_x",
+    "centroid_y",
+    "soil_moisture",
+    "temperature",
+    "humidity",
+    "light",
+    "co2"
+  ],
+  "labels": [
+    "healthy",
+    "stressed",
+    "unknown"
+  ],
+  "train_accuracy": 1.0,
+  "n_samples": 120,
+  "random_state": 42,
+  "trained_utc": "2026-08-26T02:22:13.428851Z",
+  "artifact": "plant-health-classifier-1.0.0.joblib"
+}
