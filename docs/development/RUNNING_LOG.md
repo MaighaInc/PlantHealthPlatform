@@ -110,3 +110,7 @@
 ## 2026-08-26 — PHP-19
 
 - ADR-0004 FastAPI/SQLAlchemy/PostgreSQL; backend models + repositories + migrate/seed; SQLite tests
+
+## 2026-08-26 — PHP-20
+
+- FastAPI app with plants/sensors/health/irrigation/models/status; OpenAPI /docs; TestClient tests
