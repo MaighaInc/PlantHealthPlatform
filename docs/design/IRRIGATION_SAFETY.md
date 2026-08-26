@@ -64,9 +64,11 @@ If sensor data is invalid: block irrigation, generate alert, never water indefin
 
 ```text
 GPIOInterface
- ├── MockGPIO          (CI, simulation, development)
- └── RaspberryPiGPIO   (hardware mode)
+ ├── MockGPIO          (CI, simulation, development)  ← PHP-17
+ └── RaspberryPiGPIO   (hardware mode)                 ← PHP-17
 ```
+
+Package `plant_health_irrigation` applies `/irrigation/command` through the interface and publishes `/irrigation/status`. Safety limits are PHP-18.
 
 ## Capstone Scenarios
 

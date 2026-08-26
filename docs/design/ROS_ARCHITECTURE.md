@@ -38,6 +38,8 @@ plant_health_bringup/
 | `/plant/disease_prediction` | `std_msgs/String` | pub: `inference_engine` | PHP-14 | JSON prediction + confidence + model version + latency |
 | `/plant/fused_health` | `std_msgs/String` | pub: `fusion_engine` | PHP-15 | JSON fused status for decision consumers |
 | `/irrigation/intent` | `std_msgs/String` | pub: `decision_engine` | PHP-16 | JSON water intent proposal (ADR-0003; not GPIO) |
+| `/irrigation/command` | `std_msgs/String` | sub: `irrigation_actuator` | PHP-17 | JSON `{water:bool}` → GPIO (safety gating in PHP-18) |
+| `/irrigation/status` | `std_msgs/String` | pub: `irrigation_actuator` | PHP-17 | JSON relay state after GPIO write |
 
 ## Planned Topic Structure
 
@@ -57,9 +59,8 @@ plant_health_bringup/
 /plant/disease_prediction      ← active (PHP-14)
 /plant/fused_health            ← active (PHP-15)
 /irrigation/intent             ← active (PHP-16)
-
-/irrigation/command            ← planned (post-safety, PHP-18)
-/irrigation/status             ← planned
+/irrigation/command            ← active (PHP-17; safety gate PHP-18)
+/irrigation/status             ← active (PHP-17)
 
 /diagnostics
 ```

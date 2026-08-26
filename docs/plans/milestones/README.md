@@ -50,5 +50,6 @@ Each milestone plan should include:
 | PHP-14 | [PHP-14-ros-inference.md](./PHP-14-ros-inference.md) | Complete |
 | PHP-15 | [PHP-15-sensor-fusion.md](./PHP-15-sensor-fusion.md) | Complete |
 | PHP-16 | [PHP-16-irrigation-decision.md](./PHP-16-irrigation-decision.md) | Complete |
+| PHP-17 | [PHP-17-gpio-abstraction.md](./PHP-17-gpio-abstraction.md) | Complete |
 
 See [IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md) for phase-level delivery detail and [ROADMAP.md](../ROADMAP.md) for the milestone title list.

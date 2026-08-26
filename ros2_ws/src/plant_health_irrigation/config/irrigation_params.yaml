@@ -1,0 +1,9 @@
+/** Irrigation GPIO node defaults (PHP-17). SIMULATION uses MockGPIO. */
+plant_health_irrigation:
+  ros__parameters:
+    command_topic: "/irrigation/command"
+    status_topic: "/irrigation/status"
+    development_mode: "SIMULATION"
+    gpio_backend: "auto"
+    relay_pin: 17
+    active_high: true

@@ -114,6 +114,8 @@ Copy [`.env.example`](./.env.example) to `.env`. Never commit secrets.
 | `/plant/disease_prediction` | `std_msgs/String` (JSON) | `plant_health_inference` |
 | `/plant/fused_health` | `std_msgs/String` (JSON) | `plant_health_fusion` |
 | `/irrigation/intent` | `std_msgs/String` (JSON) | `plant_health_decision` |
+| `/irrigation/command` | `std_msgs/String` (JSON) | `plant_health_irrigation` (sub) |
+| `/irrigation/status` | `std_msgs/String` (JSON) | `plant_health_irrigation` |
 
 See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 
@@ -159,7 +161,7 @@ python ml/training/train_dl.py --version 1.0.0
 
 ## Future Improvements
 
-- PHP-17: GPIO abstraction (`MockGPIO` / `RaspberryPiGPIO`)
+- PHP-18: Irrigation safety system (max duration, cooldown, e-stop, fail-safe)
 - Stamped sensor messages (replace Float32 receive_approx)
 - Wire concrete RealSensor drivers (BME280/DHT) replacing RealSensorStub
 - ONNX backend on the inference node (artifact already exported in PHP-13)

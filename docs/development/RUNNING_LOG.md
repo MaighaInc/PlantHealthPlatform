@@ -98,3 +98,8 @@
 - ADR-0003: `/irrigation/intent` for proposals; `/irrigation/command` reserved for safety/GPIO
 - Package `plant_health_decision`: fused health → intent; ML-only / unknown blocked; no GPIO imports
 
+## 2026-08-25 — PHP-17
+
+- `GPIOInterface` + `MockGPIO` (transition log) + `RaspberryPiGPIO`
+- Factory forces MockGPIO for SIMULATION/DEVELOPMENT; irrigation node uses interface only
+

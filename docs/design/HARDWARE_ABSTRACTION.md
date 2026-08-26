@@ -45,9 +45,18 @@ Support for soil moisture, temperature, humidity, light, CO2 with:
 
 ```text
 GPIOInterface
- ├── MockGPIO
- └── RaspberryPiGPIO
+ ├── MockGPIO              (SIMULATION / DEVELOPMENT / CI — records transitions)  ← PHP-17
+ └── RaspberryPiGPIO       (HARDWARE / PRODUCTION — requires RPi.GPIO)             ← PHP-17
 ```
+
+Factory (`plant_health_irrigation.factory.create_gpio`):
+
+| `development_mode` | `gpio_backend=auto` |
+|--------------------|---------------------|
+| SIMULATION / DEVELOPMENT | MockGPIO (exclusive — `backend=rpi` refused) |
+| HARDWARE / PRODUCTION | RaspberryPiGPIO |
+
+Irrigation actuator node drives the relay **only** via `GPIOInterface.write` — never direct `RPi.GPIO` in business logic.
 
 ## Development Modes
 
