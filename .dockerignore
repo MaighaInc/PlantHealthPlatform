@@ -1,0 +1,22 @@
+# Repo-root build context for ros2_ws/Dockerfile (and compose builds).
+.git
+.github
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.venv
+**/node_modules
+frontend
+backend
+tests
+docs
+scripts
+*.md
+.env
+.env.*
+!.env.example
+
+# Exclude local colcon artifacts; image builds fresh.
+ros2_ws/build
+ros2_ws/install
+ros2_ws/log

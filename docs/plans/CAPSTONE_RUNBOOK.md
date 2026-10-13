@@ -18,6 +18,8 @@
 
 Unit coverage: `tests/unit/test_decision.py`, `test_safety.py`, `test_e2e_smoke.py`, `test_security.py`.
 
+**Manual steps:** [MANUAL_TEST_PROCEDURES.md](../testing/MANUAL_TEST_PROCEDURES.md) §7 (capstone scenarios 1–5).
+
 ## Architecture walkthrough
 
 Prediction ≠ Decision ≠ Actuation — see ADRs 0002–0006 and `docs/design/SYSTEM_BOUNDARIES.md`.

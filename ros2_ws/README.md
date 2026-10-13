@@ -1,6 +1,20 @@
 # ROS 2 workspace for PlantHealthPlatform
 
-Build and run on a host with **ROS 2 Humble** (Ubuntu 22.04 or WSL2):
+Build and run on a host with **ROS 2 Humble** (Ubuntu 22.04 or WSL2), **or** use the Docker image.
+
+## Docker (SIMULATION)
+
+From repository root:
+
+```bash
+docker build -f ros2_ws/Dockerfile -t phs-ros2 .
+docker run --rm -it phs-ros2
+# or: docker compose --profile ros up --build ros
+```
+
+See [`Dockerfile`](./Dockerfile) and [`requirements.txt`](./requirements.txt).
+
+## Host / WSL
 
 ```bash
 cd ros2_ws

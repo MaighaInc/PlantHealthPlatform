@@ -37,5 +37,18 @@ services:
     depends_on:
       - api
 
+  # ROS 2 Humble SIMULATION stack (optional — use profile `ros` or `full`).
+  # Linux: add network_mode: host if bridging DDS to host nodes is required.
+  ros:
+    profiles: ["ros", "full"]
+    build:
+      context: .
+      dockerfile: ros2_ws/Dockerfile
+    environment:
+      ROS_LOCALHOST_ONLY: "1"
+      DEVELOPMENT_MODE: SIMULATION
+    # Uncomment on Linux to discover host/WSL ROS peers on the same machine:
+    # network_mode: host
+
 volumes:
   phs_pg:

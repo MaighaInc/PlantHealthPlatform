@@ -82,4 +82,5 @@ Measure before optimizing:
 
 - [MILESTONE_COMPLETION.md](./MILESTONE_COMPLETION.md)
 - [DEVELOPMENT_MODES.md](./DEVELOPMENT_MODES.md)
-- [../plans/CAPSTONE_SCENARIOS.md](../plans/CAPSTONE_SCENARIOS.md)
+- [../testing/MANUAL_TEST_PROCEDURES.md](../testing/MANUAL_TEST_PROCEDURES.md)
+- [../plans/CAPSTONE_RUNBOOK.md](../plans/CAPSTONE_RUNBOOK.md)

@@ -33,7 +33,8 @@ Every AI agent **must read these documents before writing code**, in this order:
 | 9 | [development/AGENT_WORKFLOW.md](./development/AGENT_WORKFLOW.md) | 10-step task workflow and response format |
 | 10 | [development/CODING_STANDARDS.md](./development/CODING_STANDARDS.md) | Git, dependencies, error handling, logging |
 | 11 | [development/TESTING.md](./development/TESTING.md) | Unit, integration, E2E, hardware-free CI |
-| 12 | [development/MILESTONE_COMPLETION.md](./development/MILESTONE_COMPLETION.md) | Acceptance criteria and regression rules |
+| 12 | [testing/MANUAL_TEST_PROCEDURES.md](./testing/MANUAL_TEST_PROCEDURES.md) | **Manual QA** — ROS, API, UI, capstone scenarios |
+| 13 | [development/MILESTONE_COMPLETION.md](./development/MILESTONE_COMPLETION.md) | Acceptance criteria and regression rules |
 
 ### Design (read when building relevant subsystem)
 
@@ -60,7 +61,7 @@ Every AI agent **must read these documents before writing code**, in this order:
 |----------|-------|
 | [plans/IMPLEMENTATION_PLAN.md](./plans/IMPLEMENTATION_PLAN.md) | **Master delivery plan** — phases, deps, risks, PHS DoD |
 | [plans/ROADMAP.md](./plans/ROADMAP.md) | Milestone title index |
-| [plans/CAPSTONE_SCENARIOS.md](./plans/CAPSTONE_SCENARIOS.md) | Final acceptance test scenarios |
+| [plans/CAPSTONE_RUNBOOK.md](./plans/CAPSTONE_RUNBOOK.md) | Final acceptance demo runbook (PHP-30) |
 | [plans/milestones/](./plans/milestones/) | Per-milestone plans (generated as work progresses) |
 
 ### Development
@@ -71,6 +72,7 @@ Every AI agent **must read these documents before writing code**, in this order:
 | [development/DEVELOPMENT_MODES.md](./development/DEVELOPMENT_MODES.md) | SIMULATION, DEVELOPMENT, HARDWARE, PRODUCTION |
 | [development/OBSERVABILITY.md](./development/OBSERVABILITY.md) | Logging, metrics, diagnostics |
 | [development/SECURITY.md](./development/SECURITY.md) | Auth, actuator authorization, validation |
+| [testing/MANUAL_TEST_PROCEDURES.md](./testing/MANUAL_TEST_PROCEDURES.md) | Step-by-step manual QA and capstone verification |
 
 ### Architecture Decisions
 
@@ -90,6 +92,7 @@ docs/
 ├── design/                  ← system design specs
 ├── plans/                   ← roadmap and milestone plans
 ├── development/             ← engineering process and standards
+├── testing/                 ← manual QA procedures
 └── architecture/            ← tech stack and ADRs
 ```
 

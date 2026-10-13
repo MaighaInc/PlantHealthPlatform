@@ -124,12 +124,40 @@ See [docs/design/ROS_ARCHITECTURE.md](./docs/design/ROS_ARCHITECTURE.md).
 ```bash
 docker compose up --build
 # API :8000  UI :8080  Postgres :5432
-# ROS remains on host/WSL (ADR-0006)
 ```
+
+## ROS 2 in Docker (SIMULATION)
+
+Build and run the full `plant_health_*` stack in a Humble container (mock sensors, MockGPIO, mock ML):
+
+```bash
+# Image only
+docker build -f ros2_ws/Dockerfile -t phs-ros2 .
+
+# Run unified bringup
+docker run --rm -it phs-ros2
+
+# Or with compose (server tier + ROS)
+docker compose --profile full up --build
+
+# ROS only (no db/api/web)
+docker compose --profile ros up --build ros
+```
+
+Inspect from another shell (same container name/id):
+
+```bash
+docker exec -it <container> bash -lc "ros2 topic list"
+docker exec -it <container> bash -lc "ros2 topic echo /system/status --once"
+```
+
+**Notes:** Default `ROS_LOCALHOST_ONLY=1` keeps DDS inside the container. For host↔container ROS on Linux, use `network_mode: host` in compose (see comment in `docker-compose.yml`). Native Windows Docker cannot run `rclpy` on the host — this image is the supported path for ROS without WSL.
+
+Host/WSL bringup remains supported (see [ADR-0006](./docs/architecture/adr/0006-ros-on-host-docker-server.md)).
 
 ## Testing
 
-See [docs/development/TESTING.md](./docs/development/TESTING.md). PHP-01 focuses on pure-Python heartbeat tests plus ROS launch smoke on a Humble host.
+See [docs/development/TESTING.md](./docs/development/TESTING.md) (automated) and [docs/testing/MANUAL_TEST_PROCEDURES.md](./docs/testing/MANUAL_TEST_PROCEDURES.md) (manual QA / capstone).
 
 ## Troubleshooting
 
